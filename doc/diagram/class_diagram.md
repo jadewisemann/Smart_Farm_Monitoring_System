@@ -5,16 +5,14 @@ classDiagram
 
 
 
-namespace Client_Side {          
     class Client {
 	    ip
         id
         password
         requestServer()
     }
-}
 
-namespace Server_side {
+
     class MainServer {
         
         connectDatabase()
@@ -31,9 +29,8 @@ namespace Server_side {
         updateModel()
         connectDatabase()
     }
-}
 
-namespace Database {
+
     class MainDatabase {
         temperature
         time
@@ -50,9 +47,8 @@ namespace Database {
         userRank
     }
 
-}
 
-namespace sensor {
+
     class ArduinoServer {
         getTemperature()
         getHumidity()
@@ -62,7 +58,6 @@ namespace sensor {
         captureImage()
         recordVideo()
     }
-}
 
     Client -- MainServer : requests >
 
