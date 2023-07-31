@@ -7,6 +7,9 @@ export default {
     './components/**/*.{html,js}',],
   theme: {
     extend: {},
+    fontFamily: {
+      'workSans': ['Work Sans', 'sans']
+    },
   },
   plugins: [require("daisyui")],
 }
