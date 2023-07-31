@@ -10,10 +10,11 @@ export default function MainNavbar() {
           <div className="main-nav-container flex justify-between">
             <div className="main-nav-left-section flex space-x-4">
               <div className="nav-item flex items-center space-x-1">
-                <ao
+                <a
+                  href="#"
                   className=" py-5 px-2 text-gray-700">
                   <span className=" font-bold">FAV</span>
-                </ao>
+                </a>
               </div>
               <div className="nav-item hidden sm:flex items-center space-x-1">
                 <a
