@@ -1,30 +1,24 @@
+import MainLogin from "./components/main-page/MainLogin";
+import MangedPage from "./components/feature/monitoring/MangedPage";
+
 import { useState } from "react"
-import MainNavbar from "./components/main-page/MainNavbar";
+import { Route, Routes,  } from "react-router-dom";
+import { create } from "zustand";
+
+export const useStore = create(set => {
+})
 
 function App() {
-
-  const [isLoggedIn, setIsLogggedIn] = useState(false)
-  return (
-    <>
-      <div className="main-page relative flex flex-col min-h-screen bg-slate-300">
-        <MainNavbar />
-        <div className=" bg-blue-300 flex-1 flex">
-          <div className=" max-w-3xl flex  items-center justify-center my-4 flex-1 bg-red-300 rounded-none md:rounded-3xl mx-0 md:mx-auto">
-            <div className="main-content"> 
-                {isLoggedIn 
-                ? <>
-                  <div> go to management page</div>
-                </> 
-                : <>
-                  <div> log in require</div>
-                </>
-                }
-            </div>
-          </div>
-        </div>
+  const [isLoggedIn, setIsLoggedIn] = useState(true) 
+  return (<>
+    <div className="main-page relative flex flex-col min-h-screen select-none
+      bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-indigo-200 via-red-200 to-yellow-100">
+      <div className=" flex-1 flex">
+        <Routes>
+          <Route path="/" element={!isLoggedIn? <MainLogin setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />: <MangedPage/>}/>
+        </Routes>  
       </div>
-    </>
-  )
-}
+    </div>
+  </>)}
 
 export default App

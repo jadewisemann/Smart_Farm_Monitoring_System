@@ -6,7 +6,11 @@ export default {
     './pages/**/*.{html,js}',
     './components/**/*.{html,js}',],
   theme: {
-    extend: {},
+    extend: {
+      gradientColor: {
+        
+      }
+    },
     fontFamily: {
       'workSans': ['Work Sans', 'sans']
     },
