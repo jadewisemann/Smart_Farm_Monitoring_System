@@ -17,7 +17,7 @@ export default function MainLogin({isLoggedIn, setIsLoggedIn}) {
   }
   return (
     <>
-      <div className="hero ">
+      <div className="hero">
         <div className="hero-content  flex-col">
           <div className="text-center">
             <h1 className="text-5xl font-bold mb-4">Log-In</h1>
