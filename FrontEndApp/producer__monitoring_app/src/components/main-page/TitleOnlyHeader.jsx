@@ -2,12 +2,16 @@
 export default function TitleOnlyHeader() {
   return (
     <>
-    <header className="flex flex-col items-center">
-      <div className="flex flex-col items-center mt-12 p-0 mb-12">
-        <div className=" text-6xl font-extrabold">FAV</div>
-        <div className="text-2xl font-bold ">Smart Factory Monitoring</div>
+    <header className="flex flex-col items-center border-b-2 border-black bg-slate-100">
+        <div className="flex w-full items-center justify-between">
+          <div className="w-fit border-2 border-r-black object-cover">
+            <div className="font-extrabold text-[100px] mt-[-12%] mb-[-8%] pr-2">FAV</div>
+          </div>
+          <div className="flex-1 mb-auto border-b-2 border-black">
+            <div className="text-[22px] sm:text-[32px] md:text-[40px] font-bold ">Smart Factory Monitoring</div>
+          </div>
+
       </div>
-      < div className="__divider w-[80%] h-[8px] box-border  bg-black rounded-3xl" />
     </header>
 
     </>

@@ -1,11 +1,7 @@
 import { useState } from "react"
 import TitleOnlyHeader from "./TitleOnlyHeader";
 
-
-
-
 export default function MainLogin({isLoggedIn, setIsLoggedIn}) {
-  
   const LogInAPI = ''
   const realId = "1@"
   const realPw = "123123"
@@ -13,14 +9,12 @@ export default function MainLogin({isLoggedIn, setIsLoggedIn}) {
   const [userId, setId] = useState('');
   const [userPw, setPw] = useState('');
 
-
   const [button, setButton] = useState(true);
 
   const changeButton = () => {
     userId.includes('@') && userPw.length >= 5 ? setButton(false) : setButton(true)
   };
-
-    const submitLogin = ({userId, userPw}) => {
+  const submitLogin = ({userId, userPw}) => {
     fetch(LogInAPI, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -33,14 +27,12 @@ export default function MainLogin({isLoggedIn, setIsLoggedIn}) {
     .then(json=> json)
     .catch(null)
   }
-
   const setUserLogIn = (userInfo) => {
     setIsLoggedIn(true)
   }
-
   return (<>
-    <div className="flex-1 flex items-center justify-center mx-0 md:mx-auto max-w-3xl">
-      <div className="flex flex-col min-w-[90%] min-h-[90%]  rounded-3xl bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-rose-100 to-teal-100 ">        
+    <div className="flex-1 flex items-center justify-center mx-0 md:mx-auto max-w-3xl ">
+      <div className="flex flex-col min-w-[90%] min-h-[90%]  border-black border-2 bg-white">        
       <TitleOnlyHeader />
       <div className="hero">
         <div className="hero-content  flex-col">
