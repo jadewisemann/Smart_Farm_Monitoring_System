@@ -1,4 +1,4 @@
-import MainLogin from "./components/main-page/MainLogin";
+import MainLogin from "./components/feature/login/MainLoginMUI";
 import MangedPage from "./components/feature/monitoring/MangedPage";
 
 import { useState } from "react"

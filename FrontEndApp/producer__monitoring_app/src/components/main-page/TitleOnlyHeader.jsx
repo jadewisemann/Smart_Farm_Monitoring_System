@@ -7,8 +7,8 @@ export default function TitleOnlyHeader() {
           <div className="w-fit border-2 border-r-black object-cover">
             <div className="font-extrabold text-[100px] mt-[-12%] mb-[-8%] pr-2">FAV</div>
           </div>
-          <div className="flex-1 mb-auto border-b-2 border-black">
-            <div className="text-[22px] sm:text-[32px] md:text-[40px] font-bold ">Smart Factory Monitoring</div>
+          <div className="flex-1 mb-[-6px] md:mb-auto md:border-b-2 border-black">
+            <div className="text-[38px] font-bold pl-2  text-center md:text-right pr-4">Smart Factory Monitoring</div>
           </div>
 
       </div>

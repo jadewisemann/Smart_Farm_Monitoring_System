@@ -1,5 +1,5 @@
 import { useState } from "react"
-import TitleOnlyHeader from "./TitleOnlyHeader";
+import TitleOnlyHeader from "../../main-page/TitleOnlyHeader";
 
 export default function MainLogin({isLoggedIn, setIsLoggedIn}) {
   const LogInAPI = ''
