@@ -1,20 +1,17 @@
-import MainLogin from "./components/feature/login/MainLoginMUI";
+import MainLogin from "./components/feature/login/MainLogin";
 import MangedPage from "./components/feature/monitoring/MangedPage";
 
-import { useState } from "react"
+import useStore from "./components/states/LoginState";
 import { Route, Routes,  } from "react-router-dom";
-import { create } from "zustand";
 
-export const useStore = create(set => {
-})
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false) 
+  const {isLoggedIn} = useStore (state => state)
   return (<>
-    <div className="main-page relative flex flex-col min-h-screen select-none bg-slate-200">
-      <div className=" flex-1 flex">
+    <div className="relative flex flex-col min-h-screen select-none main-page bg-slate-200">
+      <div className="flex flex-1 ">
         <Routes>
-          <Route path="/" element={!isLoggedIn? <MainLogin setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />: <MangedPage/>}/>
+          <Route path="/" element={!isLoggedIn? <MainLogin/>: <MangedPage/>}/>
         </Routes>  
       </div>
     </div>
