@@ -4,6 +4,9 @@ import MangedPage from "./components/feature/monitoring/MangedPage";
 import useStore from "./components/states/LoginState";
 import { Route, Routes,  } from "react-router-dom";
 
+function checkLoggedIn() {
+  
+}
 
 function App() {
   const {isLoggedIn} = useStore (state => state)
