@@ -6,7 +6,6 @@ import {
 import { useState } from "react"
 import useStore from "../../states/LoginState";
 
-
 export default function LoginInsidePage() {
   //zustand
   const {setLogIn} = useStore(state=>state)
@@ -37,7 +36,10 @@ export default function LoginInsidePage() {
     .catch(null)
   }
 
-  return (
+  return (<>
+    <div className="__login-header text-5xl font-extrabold mb-[4%]">
+      Login
+    </div>
     <div className="flex flex-col items-center w-full max-w-sm md:max-w-md xl:max-w-xl"> 
       <TextField label="Email Address" name="email" autoComplete="email" required fullWidth autoFocus
       onChange={e=>setId(e.target.value)} onKeyUp={changeButton} />
@@ -61,7 +63,6 @@ export default function LoginInsidePage() {
       }}>Sign in</Button>
       <Link > Forgot password? </Link>
       <div> or</div>      
-      <Link >Sign Up </Link>
+      <Link href="/SignUp">Sign Up ? </Link>
     </div>
-  )
-}
+  </>)}
