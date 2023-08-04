@@ -7,7 +7,7 @@ import { useState } from "react"
 import useStore from "../../states/LoginState";
 
 
-export default function LoginForPage() {
+export default function LoginInsidePage() {
   //zustand
   const {setLogIn} = useStore(state=>state)
   // dummy data
@@ -38,12 +38,12 @@ export default function LoginForPage() {
   }
 
   return (
-    <div className="flex flex-col items-center  max-w-sm md:max-w-md xl:max-w-xl w-full"> 
+    <div className="flex flex-col items-center w-full max-w-sm md:max-w-md xl:max-w-xl"> 
       <TextField label="Email Address" name="email" autoComplete="email" required fullWidth autoFocus
       onChange={e=>setId(e.target.value)} onKeyUp={changeButton} />
       <TextField label="Password" name="password" type="password" autoComplete="current-password" required fullWidth
         sx={{ mb: 1, mt: 2 }} onChange={e => setPw(e.target.value)} onKeyUp={changeButton}/>
-      <div className=" self-stretch">
+      <div className="self-stretch ">
         <FormControlLabel
           control={<Checkbox value="Remember" color="primary" />} label="remember me" />
       </div>

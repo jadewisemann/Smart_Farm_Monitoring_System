@@ -1,6 +1,6 @@
 import { Avatar } from "@mui/material";
 
-export default function UserAvatar({size}) {
+export default function UserAvatar() {
   return (<>
     <div className="flex items-center">
       <Avatar/>
