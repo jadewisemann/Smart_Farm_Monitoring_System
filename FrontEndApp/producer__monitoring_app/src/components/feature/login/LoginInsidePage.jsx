@@ -15,47 +15,52 @@ export default function LoginInsidePage() {
   // api
   const LogInAPI = ''
   // state
-  const [userId, setId] = useState('');
-  const [userPw, setPw] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+  const [userPassword, setUserPassword] = useState('');
   const [button, setButton] = useState(true);
   // function
   const changeButton = () => {
-    userId.includes('@') && userPw.length >= 5 ? setButton(false) : setButton(true)
+    userEmail.includes('@') && userPassword.length >= 5 ? setButton(false) : setButton(true)
   };
-  const submitLogin = ({userId, userPw}) => {
+  const submitLogin = ({userEmail, userPassword}) => {
     fetch(LogInAPI, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-      username: userId,
-      password: userPw,
+      userEmail: userEmail,
+      userPassword: userPassword,
       })
-    })
+    })  
     .then(res => res.json())
     .then(json=> json)
     .catch(null)
   }
 
   return (<>
-    <div className="__login-header text-5xl font-extrabold mb-[4%]">
+    <div className="text-5xl font-extrabold mb-[4%]">
       Login
     </div>
-    <div className="flex flex-col items-center w-full max-w-sm md:max-w-md xl:max-w-xl"> 
-      <TextField label="Email Address" name="email" autoComplete="email" required fullWidth autoFocus
-      onChange={e=>setId(e.target.value)} onKeyUp={changeButton} />
+    <div className="flex flex-col items-center w-full max-w-sm md:max-w-md"> 
+      <TextField required fullWidth autoFocus
+        label="Email Address" name="email" autoComplete="email" 
+        onChange={e => setUserEmail(e.target.value)}
+        onKeyUp={changeButton} />
       <TextField label="Password" name="password" type="password" autoComplete="current-password" required fullWidth
-        sx={{ mb: 1, mt: 2 }} onChange={e => setPw(e.target.value)} onKeyUp={changeButton}/>
+        sx={{ mb: 1, mt: 2 }}
+        onChange={e => setUserPassword(e.target.value)}
+        onKeyUp={changeButton} />
       <div className="self-stretch ">
         <FormControlLabel
           control={<Checkbox value="Remember" color="primary" />} label="remember me" />
       </div>
       <Button type="submit" fullWidth variant="contained" sx={{ mt: 1, mb: 4 }}
-        disabled={button} onClick={e => {
-          realId === userId && realPw === userPw ? (
+        disabled={button}
+        onClick={e => {
+          realId === userEmail && realPw === userPassword ? (
             e.stopPropagation(),
             setLogIn()
           ) : {};
-          const userInfo = submitLogin({ id: userId, pw: userPw });
+          const userInfo = submitLogin({ userEmail, userPassword });
           typeof userInfo !== Object ? (
             e.stopPropagation(),
             setLogIn()

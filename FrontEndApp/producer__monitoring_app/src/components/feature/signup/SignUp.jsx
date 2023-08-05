@@ -1,17 +1,5 @@
-import { Typography, FormControlLabel, Checkbox, Link, TextField, Box,Grid, Button } from "@mui/material";
-
-Typography
-function Copyright(props) {
+export default function SignUp() {
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
+    <div>SignUp</div>
+  )
 }
-
-export default function SignUp() {}

@@ -4,7 +4,7 @@
 import MainHeader from "./MainHeader";
 import LoginInsidePage from "../../feature/login/LoginInsidePage";
 import SignUpInsidePage from "../../feature/signup/SignUpInsidePage";
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 export default function MainPage() {
   return (<>
     <div className="flex-1 flex items-center justify-center mx-2 md:mx-auto max-w-[90rem] ">
