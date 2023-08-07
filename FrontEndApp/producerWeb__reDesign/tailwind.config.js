@@ -6,6 +6,10 @@ export default {
     './components/**/*.{html,js}',],
   theme: {
     extend: {},
+    fontFamily: {
+      worksans: ['Work Sans', 'sans-serif'],
+      intertight: ['Inter Tight', 'sans-serif']
+    },
   },
   plugins: [],
 }
