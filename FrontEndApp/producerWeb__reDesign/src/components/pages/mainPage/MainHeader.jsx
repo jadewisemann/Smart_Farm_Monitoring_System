@@ -24,8 +24,8 @@ export default function MainHeader() {
           </div>
           <div className="ml-4 hidden md:inline"> {/* login wrapper */}
             <div className="mx-2 font-bold text-md md:text-xl whitespace-nowrap overflow-clip">
-              <Link to="/signup">
-                log in
+              <Link to="/signin">
+                sign in
               </Link>
             </div>
           </div>
