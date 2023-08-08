@@ -11,7 +11,7 @@ export default {
       intertight: ['Inter Tight', 'sans-serif']
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar-hide")],
 }
 
 

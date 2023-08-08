@@ -1,6 +1,7 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+
 import ManagementHeader from "./ManagementHeader"
-import FarmCard from "./FarmCard"
+
 export default function ManagementPage() {
   const defaultFarm = {
     Farm1: ['Sensor1', 'Sensor4', 'Sensor3', 'Sensor2'],
@@ -12,23 +13,36 @@ export default function ManagementPage() {
     Farm7: ['Sensor5', 'Sensor6', 'Sensor7', 'Sensor8'],
     Farm8: ['Sensor5', 'Sensor6', 'Sensor7', 'Sensor8'],
   }    
+  
   const [farm, setFarm] = useState(defaultFarm);
-  const [index, setIndex] = useState(0);
-  const farmList = [...Object.keys(farm), "+"].map(el => {
+  const [selectedFarm, setSelectedFarm] = useState(null);
+
+  const fetchFarms = async () => {
+    // const data = 
+    // setFarms(data);
+  };
+
+  useEffect(() => {
+    fetchFarms();
+  }, []);
+
+  const onFarmClick = (farm) => {
+    setSelectedFarm(farm);
+  };
+  const farmList = farm.map((farmEl, index) =>{
     return (
-      <div className="w-[20%] p-4" key={index}>
-        <FarmCard farmTitle={el}/>
-      </div>
+        <li key={index} onClick={() => onFarmClick(farmEl)}>
+          {`농장 ${index + 1}`}
+        </li>
   )})
   return (<>
     <div className="flex flex-col items-center w-screen h-screen bg-red-300">
-      <div className="fixed h-[10vh] bg-sky-300"> {/* header */}
+      <div className="fixed h-[10vh] items-center bg-sky-300"> {/* header */}
           <ManagementHeader/>
       </div>
-      <div className="w-[20%] h-[90vh] fixed left-0 bottom-0 bg-blue-200 overflow-y-scroll overflow-x-hidden"> {/* aside */}
-        <div className="w-full flex flex-col">
-          {farmList}
-        </div>
+      <div className="w-[220px] h-[90vh] fixed left-0 bottom-0 items-center bg-blue-200 overflow-y-scroll scrollbar-hide flex flex-col"> {/* aside */}
+        <ul>
+        </ul>
       </div>
       <div className=" flex w-[80vw] h-[80vh] bg-fuchsia-400"  > {/* content */}
       </div>

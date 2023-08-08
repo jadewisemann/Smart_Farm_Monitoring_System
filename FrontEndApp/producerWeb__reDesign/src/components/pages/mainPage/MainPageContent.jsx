@@ -1,21 +1,23 @@
 export default function MainPageContent() {
   return (<>
     <div className="flex flex-col justify-center items-center w-screen"> {/* Content Section */}
-      <div className="w-[80vw] h-[90vh] flex flex-col items-center justify-center "> {/* Content Wrapper */}
-        <div className="flex flex-col items-start md:items-end text-3xl font-bold"> {/* hero text wrapper */}
-          <div className="flex  flex-col md:flex-row items-start md:items-end ">We believe
-            <div className=" md:ml-4 text-7xl sm:text-8xl font-extrabold ">agriculture</div>
+      <div className="w-[80vw] h-[90vh] flex flex-col items-center justify-start "> {/* Content Wrapper */}
+        
+        <div className="flex flex-col items-start md:items-end text-3xl font-bold mt-[10%]"> {/* hero text wrapper */}
+          <div className="flex  flex-col md:flex-row items-start md:items-end ">
+            We believe
+            <div className=" md:ml-4 text-7xl sm:text-8xl font-extrabold italic before:content-['We believe'] before:text-3xl">Agriculture</div>
           </div>
           <div className="flex mt-4 flex-col md:flex-row items-start md:items-end">can become more
-            <div className="md:ml-4 text-7xl sm:text-8xl font-extrabold">valuable</div>
+            <div className="md:ml-4 text-7xl sm:text-8xl font-extrabold italic">Valuable</div>
           </div>
-          <div className="flex mt-4 flex-col md:flex-row items-start md:items-end">in the
-            <div className="md:ml-4 text-7xl sm:text-8xl font-extrabold">future</div>
+          <div className="flex mt-4 flex-col md:flex-row items-start md:items-end italic">in the
+            <div className="md:ml-4 text-7xl sm:text-8xl font-extrabold">Future</div>
           </div>
         </div>
-        <div className="mt-16  h-[5vh] w-[90vw] flex justify-center al"> {/* scroll wrapper */}
+        <div className="mt-[15%]  h-[5vh] w-[90vw] flex justify-center al"> {/* scroll wrapper */}
           <div className=" flex flex-col items-center text-2xl font-extrabold h-fit">
-            <div className="mb-4"> scroll see how we archive that </div>
+            <div className="mb-4"> scroll to see how we archive that </div>
             <div className="w-12 h-12 flex items-center justify-center bg-yellow-400 rounded-full">↓</div>
           </div>
         </div>
