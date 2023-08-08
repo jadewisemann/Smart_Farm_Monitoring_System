@@ -88,7 +88,7 @@ export default function SignUpInsidePage() {
         > Sign Up </Button>
         <div className="flex">
           <div className="mt-2 ml-auto">
-            <Link href="/" variant="body2">
+            <Link href="/signin">
               Already have an account? Sign in
             </Link>
           </div>

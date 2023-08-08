@@ -6,7 +6,7 @@ import {
 import { useState } from "react"
 import useStore from "../../states/LoginState";
 
-export default function LoginInsidePage() {
+export default function SignInInsidePage() {
   //zustand
   const {setLogIn} = useStore(state=>state)
   // dummy data
@@ -38,7 +38,7 @@ export default function LoginInsidePage() {
 
   return (<>
     <div className="text-5xl font-extrabold mb-[4%]">
-      Login
+      Sign In
     </div>
     <div className="flex flex-col items-center w-full max-w-sm md:max-w-md"> 
       <TextField required fullWidth autoFocus
