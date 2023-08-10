@@ -116,7 +116,7 @@ export default function ManagementPage() {
             </div>
           </div>
           <div className=" flex justify-around h-[5%] bg-teal-400"> {/* tab section */}
-            <PropertyList listOfProperty={listOfProperty} setSelectedProperty={setSelectedProperty}/>
+            <PropertyList listOfProperty={listOfProperty} setSelectedProperty={setSelectedProperty} selectedFarm={selectedFarm} />
           </div>
           <div className="h-[95%]"> {/* content section */}
             <ManagementContent farmDataList={farmDataList} selectedFarm={selectedFarm} selectedProperty={selectedProperty} />
