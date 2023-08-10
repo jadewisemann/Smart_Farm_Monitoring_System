@@ -1,27 +1,25 @@
-export default function ManagementContent({ selectedFarm }) {
-  const selectedData = (farmData) => {
-    const [dataKey, dataValue] = farmData;
-    return (
-      <>
-        <div className="flex flex-col">
-          <div className="text-3xl font-extrabold">{dataKey}</div>
-          <div className="flex flex-wrap">
-            {dataValue.map((el, index) => {
-              return (
-                <div key={index} className="w-12 h-12 m-1">
-                  {el}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </>
-    );
-  };
-
-  return (
+export default function ManagementContent({farmDataList, selectedFarm, selectedProperty}) {
+  let printData = '';
+  Object.values(farmDataList).map(farmData => {
+    farmData.farm == selectedFarm
+      ? printData = farmData[selectedProperty]
+      : {} 
+    })
+  return(
     <>
-      <div className="">{selectedData(Object.entries(selectedFarm))}</div>
+      <div>
+        {selectedFarm}
+      </div>
+      <div>
+        {selectedProperty}
+      </div>
+      <div>
+        {
+          console.log(Object.values(farmDataList).filter(farmData => {
+            farmData.farm == selectedFarm 
+          }))
+        }
+      </div>
     </>
   );
 }
