@@ -1,24 +1,17 @@
-export default function ManagementContent({farmDataList, selectedFarm, selectedProperty}) {
-  let printData = '';
-  Object.values(farmDataList).map(farmData => {
-    farmData.farm == selectedFarm
-      ? printData = farmData[selectedProperty]
-      : {} 
-    })
-  return(
+export default function ManagementContent({ farmDataList, selectedFarm, selectedProperty }) {
+
+  const selectedFarmData = farmDataList.find(farmData => farmData['farm'] === selectedFarm);
+
+  const setOfData = selectedFarmData && selectedProperty ? selectedFarmData[selectedProperty].map((data, index) => (
+    <div key={index} className="m-1 w-16 h-16 bg-teal-300 rounded-lg items-center flex justify-center">
+      {data}
+    </div>
+  )) : null;
+
+  return (
     <>
-      <div>
-        {selectedFarm}
-      </div>
-      <div>
-        {selectedProperty}
-      </div>
-      <div>
-        {
-          console.log(Object.values(farmDataList).filter(farmData => {
-            farmData.farm == selectedFarm 
-          }))
-        }
+      <div className="flex flex-wrap justify-start ">
+        {setOfData}
       </div>
     </>
   );
