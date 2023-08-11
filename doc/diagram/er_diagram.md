@@ -11,7 +11,6 @@ erDiagram
         string userId
         string email
         string password
-        list roles
     }
     
     Device {
@@ -26,8 +25,14 @@ erDiagram
         double illuminance
         datetime recordedAt
     }
+
+    UserRole {
+        long userId
+        string role
+    }
     
     RefreshToken ||--o{ User : has
     Device ||--o{ User : belongs_to
     Device ||--o{ DeviceData : records
+    User ||--o{ UserRole : has
 ```
