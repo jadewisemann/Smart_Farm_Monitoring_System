@@ -5,36 +5,35 @@ import {
 // hooks
 import { useState } from "react"
 import useStore from "../../states/LoginState";
+import axios from "axios";
+
 
 export default function SignInInsidePage() {
   //zustand
   const {setLogIn} = useStore(state=>state)
-  // dummy data
-  const realId = "1@"
-  const realPw = "123123"
+
   // api
-  const LogInAPI = ''
+  const LogInAPI = "http://165.246.116.74:8080/members/login"
   // state
-  const [userEmail, setUserEmail] = useState('');
+  const [userId, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
   const [button, setButton] = useState(true);
   // function
   const changeButton = () => {
-    userEmail.includes('@') && userPassword.length >= 5 ? setButton(false) : setButton(true)
+    userPassword.length >= 5 ? setButton(false) : setButton(true)
   };
-  const submitLogin = ({userEmail, userPassword}) => {
-    fetch(LogInAPI, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-      userEmail: userEmail,
-      userPassword: userPassword,
+  const submitLogin = ({ userId, userPassword }) => {
+    const userData = {
+      userId: userId,
+      password: userPassword,
+    }; 
+    axios
+      .post(LogInAPI, userData)
+      .then(res => {
+        res.data.accessToken;
+        res.data.refreshToken;
       })
-    })  
-    .then(res => res.json())
-    .then(json=> json)
-    .catch(null)
-  }
+    }
 
   return (<>
     <div className="text-5xl font-extrabold mb-[4%]">
@@ -56,16 +55,12 @@ export default function SignInInsidePage() {
       <Button type="submit" fullWidth variant="contained" sx={{ mt: 1, mb: 4 }}
         disabled={button}
         onClick={e => {
-          realId === userEmail && realPw === userPassword ? (
-            e.stopPropagation(),
-            setLogIn()
-          ) : {};
-          const userInfo = submitLogin({ userEmail, userPassword });
-          typeof userInfo !== Object ? (
-            e.stopPropagation(),
-            setLogIn()
-          ) : alert('wrong!');
-      }}>Sign in</Button>
+            e.stopPropagation,
+            submitLogin({ userId, userPassword }),
+            console.log(userId, userPassword)
+            
+          }}
+      >Sign in</Button>
       <Link > Forgot password? </Link>
       <div> or</div>      
       <Link href="/SignUp">Sign Up ? </Link>

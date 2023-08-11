@@ -1,20 +1,18 @@
 import { Link, TextField, Button} from "@mui/material";
+import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 export default function SignUpInsidePage() {
   // api
-  const SignUpAPI = ""
+  const SignUpAPI = "http://165.246.116.74:8080/members/signup"
   // state
   const [button, setButton] = useState(true);
-  const [userFirstName, setUserFirstName] = useState('')
-  const [userLastName, setUserLastName] = useState('')
+  const [userId, setUserId] = useState('')
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
-  // hooks
-  const navigate = useNavigate()
+
   // function
   const changeButton = () => {
-    userFirstName.length >= 1 && userLastName.length >= 1 && userEmail.includes('@') && userPassword.length >= 5
+    userId.length >= 4 && userEmail.includes('@') && userPassword.length >= 5
       ? setButton(false) : setButton(true)
   }
   const handleSubmit = (event) => {
@@ -25,19 +23,41 @@ export default function SignUpInsidePage() {
       password: data.get('password'),
     });
   };
-  const submitSignUP = ({userFirstName, userLastName,userEmail, userPassword}) => {
+  const submitSignUP = ({ userId, userEmail, userPassword }) => {
+    axios.post(SignUpAPI, {
+        userId: userId,
+        email: userEmail,
+        password: userPassword,
+    }).then(res =>
+      res.status == 200
+        ? console.log(res)
+        : res.status = 409
+          ? console.log(res)
+          : res.status == 403
+            ? console.log(res)
+            : {}
+    )
+      .catch(error => console.log(error)) 
+  }
+
+  const oldSubmitSignUP = ({ userId, userEmail, userPassword }) => {
+    console.log(JSON.stringify({
+        userId: userId,
+        userEmail: userEmail,
+        userPassword: userPassword,
+      })),
     fetch(SignUpAPI, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        userFirstName: userFirstName,
-        userLastName:userLastName,
+        userId: userId,
         userEmail: userEmail,
-        userPassword: userPassword,
+        rawPassword: userPassword,
       })
-    })  
-    .then(res => res.json())
-    .then(res=> res.isSuccess ==  true)
+    })
+      .then(res => res.json())
+      .then(res => res.isSuccess == true
+        ? console.log('suc'):console.log('fail'))
     .catch(null)
   }
 
@@ -51,16 +71,9 @@ export default function SignUpInsidePage() {
         <div className="flex w-full mb-2">
           <div className="mr-2">
             <TextField autoFocus required fullWidth
-              autoComplete="given-name" name="firstName"
-              id="firstName" label="First Name"
-              onChange={e => setUserFirstName(e.target.value)}
-              onKeyUp={changeButton}/>
-          </div>
-          <div className="">
-            <TextField required fullWidth
-              name="lastName"autoComplete="family-name"
-              id="lastName" label="Last Name"
-              onChange={e => setUserLastName(e.target.value)}
+              autoComplete="userId " name="userId"
+              id="userId" label="user id"
+              onChange={e => setUserId(e.target.value)}
               onKeyUp={changeButton}/>
           </div>
         </div>
@@ -82,8 +95,8 @@ export default function SignUpInsidePage() {
           disabled={button}
           onClick={e => { 
             e.stopPropagation,
-            submitSignUP({ userFirstName, userLastName, userEmail, userPassword }),
-            navigate("/")
+              submitSignUP({ userId, userEmail, userPassword }),
+              console.log(userId, userPassword, userEmail)
           }}
         > Sign Up </Button>
         <div className="flex">
