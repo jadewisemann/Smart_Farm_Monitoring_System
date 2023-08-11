@@ -173,15 +173,6 @@ export default function ManagementPage() {
             <div className="max-h-[93%] overflow-x-hidden overflow-y-auto scrollbar-hide p-2 ">
               <ManagementContent farmDataList={farmDataList} selectedFarm={selectedFarm} selectedProperty={selectedProperty} />
             </div>
-<<<<<<< HEAD
-=======
-          </div>
-          <div className=" flex justify-around h-[5%] bg-teal-400"> {/* tab section */}
-            <PropertyList listOfProperty={listOfProperty} setSelectedProperty={setSelectedProperty} selectedFarm={selectedFarm} />
-          </div>
-          <div className="h-[95%]"> {/* content section */}
-            <ManagementContent farmDataList={farmDataList} selectedFarm={selectedFarm} selectedProperty={selectedProperty} />
->>>>>>> 62e2d6158e5b87e90d49cb2b52ddd950f3976ef7
           </div>
         </div>
       </div>
