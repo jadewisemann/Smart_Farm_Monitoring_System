@@ -1,3 +1,4 @@
+```mermaid
 erDiagram
     RefreshToken {
         long id
@@ -29,3 +30,4 @@ erDiagram
     RefreshToken ||--o{ User : has
     Device ||--o{ User : belongs_to
     Device ||--o{ DeviceData : records
+```
