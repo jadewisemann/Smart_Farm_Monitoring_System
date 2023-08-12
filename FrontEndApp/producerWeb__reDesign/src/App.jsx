@@ -1,9 +1,8 @@
 import MainPage from "./components/pages/mainPage/MainPage";
 import ManagementPage from "./components/pages/managementPage/ManagementPage";
 import SignUpPage from "./components/pages/signUpPage/SignUpPage";
-import useStore from "./components/states/LoginState";
+import useStore from "./store/LoginState";
 import { Route, Routes, Navigate } from "react-router-dom";
-
 
 function App() {
   const {isLoggedIn} = useStore (state => state)
