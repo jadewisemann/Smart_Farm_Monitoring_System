@@ -1,6 +1,5 @@
-import MainPage from "./components/pages/mainPage/MainPage";
-import ManagementPage from "./components/pages/managementPage/ManagementPage";
-import SignUpPage from "./components/pages/signUpPage/SignUpPage";
+import MainPage from "./pages/main/MainPage";
+import ManagementPage from "./pages/management/ManagementPage";
 import useStore from "./store/LoginState";
 import { Route, Routes, Navigate } from "react-router-dom";
 
