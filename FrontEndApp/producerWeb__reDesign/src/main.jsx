@@ -2,18 +2,18 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 
 import { BrowserRouter } from 'react-router-dom'
-import { CookiesProvider } from 'react-cookie'
 
 import App from './App.jsx'
 import './index.css'
+import {  RecoilRoot } from 'recoil'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <CookiesProvider>
+    <RecoilRoot>
       <BrowserRouter>
         <App/>
       </BrowserRouter>
-    </CookiesProvider>    
+    </RecoilRoot>
   </React.StrictMode>,
 )
