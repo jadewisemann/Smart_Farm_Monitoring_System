@@ -6,7 +6,7 @@ import PropertyList from "./utils/listRendering/PropertyList";
 // components
 import ManagementContent from "./components/ManagementContent";
 // test data
-import { defaultFarm } from "../../test/testFarmData";
+import {defaultFarm}  from "../../../test/testFarmData"
 
 export default function ManagementPage() {
   const fetchFarms = async () => {
@@ -54,9 +54,9 @@ export default function ManagementPage() {
   }
 
 
-  const [farmDataList, setFarmDataList] = useState(objectToArray(defaultFarm));
-  const [listOfFarm, setListOfFarm] = useState(getListOfFarm(farmDataList));
-  const [listOfProperty, setListOfProperty] = useState(getListOfProperty(farmDataList));
+  const [farmDataList] = useState(objectToArray(defaultFarm));
+  const [listOfFarm,] = useState(getListOfFarm(farmDataList));
+  const [listOfProperty,] = useState(getListOfProperty(farmDataList));
   const [selectedFarm, setSelectedFarm] = useState(null);
   const [selectedProperty, setSelectedProperty] = useState(null);
 
@@ -103,7 +103,7 @@ export default function ManagementPage() {
             <div className=" flex justify-start items-center h-[7%] "> 
               {/* property wrapper */}
               <div className="flex w-fit mx-2 justify-between  ">
-                <PropertyList listOfProperty={listOfProperty} setSelectedProperty={setSelectedProperty} selectedFarm={selectedFarm}/>
+                <PropertyList listOfProperty={listOfProperty} setSelectedProperty={setSelectedProperty} selectedFarm={selectedFarm} />
               </div>
             </div>
             {/* content section */}

@@ -1,19 +1,22 @@
-import MainPage from "./pages/main/MainPage";
-import ManagementPage from "./pages/management/ManagementPage";
-import useStore from "./store/LoginState";
-import { Route, Routes, Navigate } from "react-router-dom";
+import MainPage from "./pages/home/MainPage";
+import ManagementPage from "./pages/private/management/ManagementPage";
+import { Route, Routes } from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom'
+import { ProtectedRoute } from "./routes/ProtectedRoute";
 
 function App() {
-  const {isLoggedIn} = useStore (state => state)
   return (<>
     <div className=" bg-teal-100 h-fit overflow-x-hidden overflow-y-auto">
       <div className="relative flex flex-col  select-none">
         <div className="flex flex-col items-center  w-screen min-h-screen">
-          {isLoggedIn && (<Navigate to="/ManagementPage" />)}
-          <Routes>
-            <Route path="/*" element={isLoggedIn ? <Navigate to="/ManagementPage"/> : <MainPage/>  }/>
-            <Route path="/ManagementPage" element={isLoggedIn ? <ManagementPage /> : <Navigate to="/" />} />
-          </Routes>  
+          <BrowserRouter>
+            <Routes>
+              <Route path="/*" element={<MainPage />} />
+              <Route element ={<ProtectedRoute />}>
+                  <Route path="/ManagementPage" element={<ManagementPage />} />
+              </Route>
+            </Routes>  
+          </BrowserRouter>
         </div>
       </div>     
     </div>
