@@ -114,7 +114,7 @@ void loop(void) {
     serializeJson(jsonDocument, jsonResponse);
 
     //send data to mqtt broker
-    mqttClient.publish("smartfarm/sensors", jsonResponse.c_str());
+    mqttClient.publish("smartfarm/sensor1", jsonResponse.c_str());
 
     Serial.print("Illuminance: ");
     Serial.println(illuminance);
