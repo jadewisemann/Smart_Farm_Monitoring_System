@@ -16,6 +16,7 @@ const char* mqttServer = "9c500c1053df40c795c005da44aee8f0.s2.eu.hivemq.cloud";
 const int mqttPort = 8883;
 const char* mqttUsername = "HyeonseoLee";
 const char* mqttPassword = "****";
+int photoResistor = A1;
 
 
 //root certificate
@@ -55,37 +56,48 @@ emyPxgcYxn/eR44/KJ4EBs+lVDR3veyJm+kXQ99b21/+jh5Xos1AnX5iItreGCc=
 
 PubSubClient mqttClient(wifiClient);
 
-int photoResistor = A1;
+struct sensorData {
+    int illuminance;
+    float humidityValue;
+    float degreeCelsius;
+
+};
 
 void setup(void) {
   Serial.begin(115200);
   dht.begin();
+  setupWifi();
+  mqttClient.setServer(mqttServer, mqttPort);
+  wifiClient.setInsecure();
+  wifiClient.setCACert(root_ca);
+  Serial.println("MQTT client initializing!");  
+}
 
+void setupWifi() {
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
-  
   Serial.print("Connecting to ");
   Serial.print(ssid);
+
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
-  
+
   Serial.println("");
   Serial.print("Connected to ");
   Serial.println(ssid);
   Serial.print("IP Address: ");
   Serial.println(WiFi.localIP());
-
-  mqttClient.setServer(mqttServer, mqttPort);
-  wifiClient.setInsecure();
-  wifiClient.setCACert(root_ca);
-
-  Serial.println("MQTT client initializing!");
 }
 
-void loop(void) {
-  if (!mqttClient.connected()) {
+void maintainConnection() {
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  while (!mqttClient.connected()) {
     Serial.print("Attempting MQTT connection...");
     if (mqttClient.connect("UniqueClientID", mqttUsername, mqttPassword)) {
       Serial.println("connected");
@@ -95,38 +107,59 @@ void loop(void) {
       Serial.println(" try again in 5 seconds");
       delay(5000);
     }
-  } else {
-    mqttClient.loop();
-
-    //read sensor using dht22
-    int illuminance = analogRead(photoResistor);
-    float humidityValue = dht.readHumidity();
-    float degreeCelsius = dht.readTemperature();
-    float degreeFahrenheit = dht.readTemperature(true);
-
-    //make data to json format
-    StaticJsonDocument<200> jsonDocument;
-    jsonDocument["illuminance"] = illuminance;
-    jsonDocument["humidity"] = humidityValue;
-    jsonDocument["temperatureCelsius"] = degreeCelsius;
-    jsonDocument["temperatureFahrenheit"] = degreeFahrenheit;
-    String jsonResponse;
-    serializeJson(jsonDocument, jsonResponse);
-
-    //send data to mqtt broker
-    mqttClient.publish("smartfarm/sensor1", jsonResponse.c_str());
-
-    Serial.print("Illuminance: ");
-    Serial.println(illuminance);
-    Serial.print("Humidity: ");
-    Serial.println(humidityValue);
-    Serial.print("Temperature Celsius: ");
-    Serial.print(degreeCelsius);
-    Serial.print("C (");
-    Serial.print("Temperature Fahrenheit: ");
-    Serial.print(degreeFahrenheit);
-    Serial.println("F)");
-
-    delay(5000);
   }
+}
+
+void loop() {
+  maintainConnection();
+  mqttClient.loop();
+
+  sensorData data = readSensorData();
+  StaticJsonDocument<200> jsonDocument;
+  createJsonMessage(data, jsonDocument);
+  sendData(jsonDocument);
+  printInSerial(data);
+
+  delay(5000);
+}
+
+//read sensor using dht22
+sensorData readSensorData() {
+  sensorData data;
+  data.illuminance = analogRead(photoResistor);
+  data.humidityValue = dht.readHumidity();
+  data.degreeCelsius = dht.readTemperature();
+
+  if (isnan(data.humidityValue) || isnan(data.degreeCelsius)) {
+    Serial.println("Failed to read from DHT sensor!");
+    return sensorData{};
+  }
+
+  return data;
+}
+
+//make data to json format
+void createJsonMessage(sensorData sensorData, StaticJsonDocument<200>& jsonDocument) {
+  jsonDocument["illuminance"] = sensorData.illuminance;
+  jsonDocument["humidity"] = sensorData.humidityValue;
+  jsonDocument["temperatureCelsius"] = sensorData.degreeCelsius;
+}
+
+//send data to mqtt broker
+void sendData(StaticJsonDocument<200>& jsonDocument) {
+  char buffer[256];
+  serializeJson(jsonDocument, buffer);
+  mqttClient.publish("smartfarm/sensor1", buffer);
+}
+
+void printInSerial(sensorData sensorData) {
+    
+    Serial.print("Illuminance: ");
+    Serial.println(sensorData.illuminance);
+    Serial.print("Humidity: ");
+    Serial.println(sensorData.humidityValue);
+    Serial.print("Temperature Celsius: ");
+    Serial.print(sensorData.degreeCelsius);
+    Serial.println("C");
+  
 }
