@@ -1,5 +1,4 @@
 import SignUpInComponent from "../../components/sign-up/SignUpComponent";
-import { Route, Routes } from "react-router-dom";
 
 export default function SignUpPage() {
   return (<>

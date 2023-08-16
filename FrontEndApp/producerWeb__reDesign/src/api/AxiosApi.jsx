@@ -7,7 +7,6 @@ const AxiosApi = axios.create({
   headers: { 'Content-Type': 'application/json' }
 });
 
-
 // 요청 처리
 AxiosApi.interceptors.request.use(
   config  => {
@@ -33,6 +32,7 @@ AxiosApi.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+
 // 반응 처리
 AxiosApi.interceptors.response.use(
   response => {

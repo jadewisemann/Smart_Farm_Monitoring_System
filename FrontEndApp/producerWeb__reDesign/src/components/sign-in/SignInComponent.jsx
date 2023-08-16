@@ -1,20 +1,22 @@
 import { Checkbox, TextField, Button, FormControlLabel, Link, } from "@mui/material";
 
 import { useState } from "react"
+import { useRequestSignIn } from "../../services/useRequestSignIn";
+import { isLoginAtom } from "../../recoil/isLogInAtom";
+import { useSetRecoilState } from "recoil";
 import { Navigate } from "react-router-dom";
-import { requestSignIn } from "../../services/requestSignIn";
-
-import { getCookie } from "../../hooks/reactCookie";
 
 export default function SignInComponent() {
-  const isLogin = true  
-  // const isLogin = getCookie('accessToken');  
+  // cookie
 
   // local state
   const [userId, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
   const [button, setButton] = useState(true);
   const errorMessage = 'login failed'
+
+  // recoil
+  const setIsLogin = useSetRecoilState(isLoginAtom)
 
   // routing
   
@@ -23,19 +25,18 @@ export default function SignInComponent() {
     userPassword.length >= 8 ? setButton(false) : setButton(true)
   };
 
-  const handleSubmit = async () => {
-    const response = await requestSignIn({ userId, userPassword });
-    response?.status !== 200 && alert(errorMessage)
+  const HandleSubmit = async ({ userId, userPassword }) => {
+    const response = await useRequestSignIn({ userId, userPassword });
+    response?.status === 200 ? (
+      setIsLogin(true), redirection() 
+    ) : alert(errorMessage)
   }
 
-  const redirection = () => { 
-    return (
-      <Navigate to="/ManagementPage" />
-    )
+
+  const redirection = () => {
+    return <Navigate to="/managementPage"/>
   }
-  isLogin ? redirection(): {}
-
-
+  
 
   
   return (<>
@@ -59,8 +60,8 @@ export default function SignInComponent() {
       <Button type="submit" fullWidth variant="contained" sx={{ mt: 1, mb: 4 }} disabled={button}
         onClick={e => {
           e.stopPropagation();
-          handleSubmit({ userId, userPassword });
-          }}> Sign in </Button>
+          HandleSubmit({ userId, userPassword });
+        }}> Sign in </Button>
       <Link > Forgot password? </Link>
       <div> or</div>      
       <Link href="/SignUp">Sign Up ? </Link>

@@ -1,73 +1,32 @@
 import { Link, TextField, Button} from "@mui/material";
-import axios from "axios";
 import { useState } from "react";
+import { useRequestSignUp } from "../../services/useRequestSignUp";
+import { Navigate } from "react-router-dom";
 
 
 export default function SignUpComponent() {
-  // api
-  const SignUpAPI = "http://165.246.116.74:8080/members/signup"
   // state
   const [button, setButton] = useState(true);
   const [userId, setUserId] = useState('')
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
-
+  const errorMessage = useState('sign up rejected')
   // function
-  const changeButton = () => {
+  const inputValidation = () => {
     userId.length >= 4 && userEmail.includes('@') && userPassword.length >= 5
       ? setButton(false) : setButton(true)
   }
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+  const handleSubmit = async ({ userId, userEmail, userPassword }) => {
+    const response = await useRequestSignUp({ userId, userEmail, userPassword });
+    response?.status === 200
+      ? redirection()
+      : alert(errorMessage)
   };
-
-  // login Logics
-  
-
-  const submitSignUP = ({ userId, userEmail, userPassword }) => {
-    axios.post(SignUpAPI, {
-        userId: userId,
-        email: userEmail,
-        password: userPassword,
-    }).then(res =>
-      res.status == 200
-        ? console.log(res)
-        : res.status = 409
-          ? console.log(res)
-          : res.status == 403
-            ? console.log(res)
-            : {}
+  const redirection = () => { 
+    return (
+      <Navigate to="/signIn" />
     )
-      .catch(error => console.log(error)) 
   }
-
-  const oldSubmitSignUP = ({ userId, userEmail, userPassword }) => {
-    console.log(JSON.stringify({
-        userId: userId,
-        userEmail: userEmail,
-        userPassword: userPassword,
-      })),
-    fetch(SignUpAPI, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        userId: userId,
-        userEmail: userEmail,
-        rawPassword: userPassword,
-      })
-    })
-      .then(res => res.json())
-      .then(res => res.isSuccess == true
-        ? console.log('suc'):console.log('fail'))
-    .catch(null)
-  }
-
-
   return (<>
     <div className="text-5xl font-extrabold mb-[4%]">
       Sign up
@@ -80,7 +39,7 @@ export default function SignUpComponent() {
               autoComplete="userId " name="userId"
               id="userId" label="user id"
               onChange={e => setUserId(e.target.value)}
-              onKeyUp={changeButton}/>
+              onKeyUp={inputValidation}/>
           </div>
         </div>
         <div className="mb-2">
@@ -88,23 +47,21 @@ export default function SignUpComponent() {
             name="email" autoComplete="email"
             id="email" label="Email Address"
             onChange={e => setUserEmail(e.target.value)}
-            onKeyUp={changeButton}/>
+            onKeyUp={inputValidation}/>
         </div>
         <div className="mb-2">
           <TextField required fullWidth
             name="password" label="Password" type="password"
             id="password" autoComplete="new-password"
             onChange={e => setUserPassword(e.target.value)}
-            onKeyUp={changeButton}/>
+            onKeyUp={inputValidation}/>
         </div>
         <Button fullWidth type="submit" variant="contained" 
           disabled={button}
           onClick={e => { 
-            e.stopPropagation,
-              submitSignUP({ userId, userEmail, userPassword }),
-              console.log(userId, userPassword, userEmail)
-          }}
-        > Sign Up </Button>
+            e.stopPropagation(),
+            handleSubmit({ userId, userEmail, userPassword })
+          }}> Sign Up </Button>
         <div className="flex">
           <div className="mt-2 ml-auto">
             <Link href="/signin">
