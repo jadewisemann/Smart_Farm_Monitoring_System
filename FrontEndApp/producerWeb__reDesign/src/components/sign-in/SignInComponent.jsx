@@ -2,17 +2,17 @@ import { Checkbox, TextField, Button, FormControlLabel, Link, } from "@mui/mater
 
 import { useState } from "react"
 import { requestSignIn } from "../../services/requestSignIn";
-import { isLoginAtom } from "../../recoil/isLogInAtom";
-import { useSetRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 
+import { useAuth } from "../../context/AuthContext";
+
 export default function SignInComponent() {
+  const { logIn } = useAuth();
   const [userId, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
   const [button, setButton] = useState(true);
   const errorMessage = 'login failed'
 
-  const setIsLogin = useSetRecoilState(isLoginAtom)
 
   const navigate = useNavigate();
 
@@ -20,18 +20,19 @@ export default function SignInComponent() {
     userPassword.length >= 8 ? setButton(false) : setButton(true)
   };
 
-  const handleSubmit = async ({ userId, userPassword }) => {
-    const response = await requestSignIn({ userId, userPassword });
-    response?.status === 200 ? (
-      setIsLogin(true),
-      redirection()
-    ) : alert(errorMessage)
-  }
-
   const redirection = () => {
     navigate('/managementPage ')
   }
     
+  const handleSubmit = async ({ userId, userPassword }) => {
+    const response = await requestSignIn({ userId, userPassword });
+    response?.status === 200 ? (
+      logIn(response),
+      redirection()
+    ) : alert(errorMessage)
+  }
+
+
   return (<>
     {/* sign In, Header */}
     <div className="text-5xl font-extrabold mb-[4%]">
