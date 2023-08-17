@@ -14,11 +14,11 @@ export const requestSignIn = async ({ userId, userPassword }) => {
       password: userPassword,
     });
 
-    response.status === 200 &&(
+    response.status === 200 && (
       setCookie('accessToken', response.data.accessToken),
       setCookie('refreshToken', response.data.refreshToken, { expires: new Date(Date.now() + refreshTokenLifeTime) })
-    )
-
+    )  
+    
     console.log(response)
     return response;
   }
@@ -26,6 +26,10 @@ export const requestSignIn = async ({ userId, userPassword }) => {
   {
     console.log(error);
     error.status = 200;
+    (
+      setCookie('accessToken', 'dummyAccessToken'),
+      setCookie('refreshToken', 'dummyRefreshToken', { expires: new Date(Date.now() + refreshTokenLifeTime) })
+    )  
     return error;
   }
   }

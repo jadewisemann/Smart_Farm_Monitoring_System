@@ -5,16 +5,7 @@ import ManagementContent from "./components/ManagementContent";
 import {defaultFarm}  from "../../../test/testFarmData"
 
 export default function ManagementPage() {
-  const fetchFarms = async () => {
-    // const data = 
-  // setFarms(data);
-  };
-
-  useEffect(() => {
-    fetchFarms();
-  }, []);
-
-
+  
   function objectToArray(object) {
     const keyList = Object.keys(object);
     const result = keyList.map((farm) => {

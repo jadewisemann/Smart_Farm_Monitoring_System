@@ -22,17 +22,13 @@ export default function SignInComponent() {
 
   const handleSubmit = async ({ userId, userPassword }) => {
     const response = await requestSignIn({ userId, userPassword });
-    console.log(response)
-    console.log(response.status)
     response?.status === 200 ? (
-      console.log('tr ue'),
       setIsLogin(true),
       redirection()
     ) : alert(errorMessage)
   }
 
   const redirection = () => {
-    console.log('redirect')
     navigate('/managementPage ')
   }
     

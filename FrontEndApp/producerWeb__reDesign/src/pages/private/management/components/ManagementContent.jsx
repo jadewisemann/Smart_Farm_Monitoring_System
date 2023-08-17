@@ -1,3 +1,6 @@
+import { Heatmap } from "./Heatmap";
+import { CalendarHeatmap } from "./CalendarHeatmap";
+import StackedAreaChart from "./StackedAreaChart";
 export default function ManagementContent({ farmDataList, selectedFarm, selectedProperty }) {
 
   const selectedFarmData = farmDataList.find(farmData => farmData['farm'] === selectedFarm);
@@ -12,6 +15,16 @@ export default function ManagementContent({ farmDataList, selectedFarm, selected
     <>
       <div className="flex flex-wrap justify-start ">
         {setOfData}
+        <div className="w-[100%] h-[146px]">
+          <StackedAreaChart />
+          
+        </div>
+        <div className="w-[1000px] h-[1000px]  bg-red-50">
+          <Heatmap/>
+        </div  >
+        <div className="w-[1000px] h-[1000px]  bg-red-50">
+          <CalendarHeatmap/>
+        </div>
       </div>
     </>
   );
