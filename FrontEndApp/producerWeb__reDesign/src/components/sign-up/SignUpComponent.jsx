@@ -1,6 +1,6 @@
 import { Link, TextField, Button} from "@mui/material";
 import { useState } from "react";
-import { useRequestSignUp } from "../../services/useRequestSignUp";
+import { requestSignUp } from "../../services/requestSignUp";
 import { Navigate } from "react-router-dom";
 
 
@@ -17,7 +17,7 @@ export default function SignUpComponent() {
       ? setButton(false) : setButton(true)
   }
   const handleSubmit = async ({ userId, userEmail, userPassword }) => {
-    const response = await useRequestSignUp({ userId, userEmail, userPassword });
+    const response = await requestSignUp({ userId, userEmail, userPassword });
     response?.status === 200
       ? redirection()
       : alert(errorMessage)

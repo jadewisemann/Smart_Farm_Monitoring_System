@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react"
+import {  useState } from "react"
 import FarmList from "./utils/listRendering/FarmList";
 import PropertyList from "./utils/listRendering/PropertyList";
 import ManagementContent from "./components/ManagementContent";
 import {defaultFarm}  from "../../../test/testFarmData"
 
 export default function ManagementPage() {
-  
+
   function objectToArray(object) {
     const keyList = Object.keys(object);
     const result = keyList.map((farm) => {

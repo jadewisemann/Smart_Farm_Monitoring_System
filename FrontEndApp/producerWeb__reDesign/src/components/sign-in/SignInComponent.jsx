@@ -6,25 +6,22 @@ import { useNavigate } from "react-router-dom";
 
 import { useAuth } from "../../context/AuthContext";
 
+
 export default function SignInComponent() {
+  // hooks
   const { logIn } = useAuth();
+  const navigate = useNavigate();
+  // internal state
   const [userId, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
   const [button, setButton] = useState(true);
   const errorMessage = 'login failed'
-
-
-  const navigate = useNavigate();
-
-  const inputValidation = () => {
-    userPassword.length >= 8 ? setButton(false) : setButton(true)
-  };
-
-  const redirection = () => {
-    navigate('/managementPage ')
-  }
-    
-  const handleSubmit = async ({ userId, userPassword }) => {
+  // functions
+  const inputValidation = () => userPassword.length >= 8 ? setButton(false) : setButton(true);
+  const redirection = () => navigate('/managementPage ');
+  
+  const handleSubmit = async ({ userId, userPassword }) =>
+  {
     const response = await requestSignIn({ userId, userPassword });
     response?.status === 200 ? (
       logIn(response),
