@@ -1,11 +1,7 @@
-// hooks
 import { useEffect, useState } from "react"
-// utils
 import FarmList from "./utils/listRendering/FarmList";
 import PropertyList from "./utils/listRendering/PropertyList";
-// components
 import ManagementContent from "./components/ManagementContent";
-// test data
 import {defaultFarm}  from "../../../test/testFarmData"
 
 export default function ManagementPage() {

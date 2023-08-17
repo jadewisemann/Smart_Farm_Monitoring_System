@@ -1,8 +1,7 @@
 import MainPage from "./pages/home/MainPage";
 import ManagementPage from "./pages/private/management/ManagementPage";
-import { Route, Routes } from "react-router-dom";
-import { BrowserRouter } from 'react-router-dom'
-import ProtectedRoute from "./routes/ProtectedRoutes";
+import { Route, Routes, BrowserRouter, Navigate  } from "react-router-dom";
+import useCheckLogin from "./hooks/useCheckLogin";
 
 function App() {
   return (<>
@@ -11,10 +10,8 @@ function App() {
         <div className="flex flex-col items-center  w-screen min-h-screen">
           <BrowserRouter>
             <Routes>
-              <Route path="/*" element={<MainPage />} />
-              <Route element ={<ProtectedRoute/>} >
-                <Route path="/ManagementPage" element={<ManagementPage />} />
-              </Route>
+              <Route path="/*" element={useCheckLogin? <MainPage /> : <Navigate to='/managementPage'/>} />
+              <Route path="/managementPage" element={ useCheckLogin? <ManagementPage /> : <Navigate to='/'/>} />
             </Routes>  
           </BrowserRouter>
         </div>
