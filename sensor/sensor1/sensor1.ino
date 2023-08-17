@@ -20,6 +20,7 @@ const char* mqttPassword = "****";
 const char* ntpServer = "kr.pool.ntp.org";
 const long  gmtOffsetSeconds = 9 * 3600;
 const int   daylightOffsetSeconds = 0;
+String macAddress = WiFi.macAddress();
 int photoResistor = A1;
 
 
@@ -66,6 +67,7 @@ struct sensorData {
     float degreeCelsius;
 
 };
+
 
 void setup(void) {
   Serial.begin(115200);
@@ -122,7 +124,7 @@ void loop() {
   getTimeString(currentTime, sizeof(currentTime));
   sensorData data = readSensorData();
   StaticJsonDocument<200> jsonDocument;
-  createJsonMessage(data, currentTime, jsonDocument);
+  createJsonMessage(macAddress, data, currentTime, jsonDocument);
   sendData(jsonDocument);
   printInSerial(data, currentTime);
 
@@ -155,8 +157,10 @@ void getTimeString(char* buffer, size_t bufferSize)
 }
 
 
+
 //make data to json format
-void createJsonMessage(sensorData sensorData, char* currentTime, StaticJsonDocument<200>& jsonDocument) {
+void createJsonMessage(String macAddress, sensorData sensorData, char* currentTime, StaticJsonDocument<200>& jsonDocument) {
+  jsonDocument["macAddress"] = macAddress;
   jsonDocument["currentTime"] = currentTime;
   jsonDocument["illuminance"] = sensorData.illuminance;
   jsonDocument["humidity"] = sensorData.humidityValue;
@@ -167,10 +171,12 @@ void createJsonMessage(sensorData sensorData, char* currentTime, StaticJsonDocum
 void sendData(StaticJsonDocument<200>& jsonDocument) {
   char buffer[256];
   serializeJson(jsonDocument, buffer);
-  mqttClient.publish("smartfarm/sensor1", buffer);
+  mqttClient.publish("smartfarm/sensor", buffer);
 }
 
 void printInSerial(sensorData sensorData, char* currentTime) {
+    Serial.print("Mac Address: ");
+    Serial.println(macAddress);
     Serial.print("Current Time: ");
     Serial.println(currentTime);    
     Serial.print("Illuminance: ");
