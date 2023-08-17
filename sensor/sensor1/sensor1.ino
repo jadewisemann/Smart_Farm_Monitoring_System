@@ -4,6 +4,7 @@
 #include <ArduinoJson.h>
 #include <DHT.h>
 #include "time.h"
+#include "credentials.h"
 
 #define dhtPin D9
 #define dhtType DHT22
@@ -11,12 +12,8 @@
 DHT dht(dhtPin, dhtType);
 WiFiClientSecure wifiClient;
 
-const char* ssid = "AndroidHotspot06_A2_F1";
-const char* password = "****";
 const char* mqttServer = "9c500c1053df40c795c005da44aee8f0.s2.eu.hivemq.cloud";
 const int mqttPort = 8883;
-const char* mqttUsername = "HyeonseoLee";
-const char* mqttPassword = "****";
 const char* ntpServer = "kr.pool.ntp.org";
 const long  gmtOffsetSeconds = 9 * 3600;
 const int   daylightOffsetSeconds = 0;
