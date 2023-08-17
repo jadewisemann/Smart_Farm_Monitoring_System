@@ -3,6 +3,7 @@
 #include <WiFiClientSecure.h>
 #include <ArduinoJson.h>
 #include <DHT.h>
+#include "time.h"
 
 #define dhtPin D9
 #define dhtType DHT22
@@ -16,6 +17,9 @@ const char* mqttServer = "9c500c1053df40c795c005da44aee8f0.s2.eu.hivemq.cloud";
 const int mqttPort = 8883;
 const char* mqttUsername = "HyeonseoLee";
 const char* mqttPassword = "****";
+const char* ntpServer = "kr.pool.ntp.org";
+const long  gmtOffsetSeconds = 9 * 3600;
+const int   daylightOffsetSeconds = 0;
 int photoResistor = A1;
 
 
@@ -67,6 +71,7 @@ void setup(void) {
   Serial.begin(115200);
   dht.begin();
   setupWifi();
+  configTime(gmtOffsetSeconds, daylightOffsetSeconds, ntpServer);
   mqttClient.setServer(mqttServer, mqttPort);
   wifiClient.setInsecure();
   wifiClient.setCACert(root_ca);
@@ -113,12 +118,13 @@ void maintainConnection() {
 void loop() {
   maintainConnection();
   mqttClient.loop();
-
+  char currentTime[20];
+  getTimeString(currentTime, sizeof(currentTime));
   sensorData data = readSensorData();
   StaticJsonDocument<200> jsonDocument;
-  createJsonMessage(data, jsonDocument);
+  createJsonMessage(data, currentTime, jsonDocument);
   sendData(jsonDocument);
-  printInSerial(data);
+  printInSerial(data, currentTime);
 
   delay(5000);
 }
@@ -138,8 +144,20 @@ sensorData readSensorData() {
   return data;
 }
 
+void getTimeString(char* buffer, size_t bufferSize)
+{
+  struct tm timeinfo;
+  if(!getLocalTime(&timeinfo)){
+    Serial.println("failed to get time!");
+    return;
+  }
+  strftime(buffer, bufferSize, "%H:%M:%S", &timeinfo);
+}
+
+
 //make data to json format
-void createJsonMessage(sensorData sensorData, StaticJsonDocument<200>& jsonDocument) {
+void createJsonMessage(sensorData sensorData, char* currentTime, StaticJsonDocument<200>& jsonDocument) {
+  jsonDocument["currentTime"] = currentTime;
   jsonDocument["illuminance"] = sensorData.illuminance;
   jsonDocument["humidity"] = sensorData.humidityValue;
   jsonDocument["temperatureCelsius"] = sensorData.degreeCelsius;
@@ -152,8 +170,9 @@ void sendData(StaticJsonDocument<200>& jsonDocument) {
   mqttClient.publish("smartfarm/sensor1", buffer);
 }
 
-void printInSerial(sensorData sensorData) {
-    
+void printInSerial(sensorData sensorData, char* currentTime) {
+    Serial.print("Current Time: ");
+    Serial.println(currentTime);    
     Serial.print("Illuminance: ");
     Serial.println(sensorData.illuminance);
     Serial.print("Humidity: ");
@@ -163,3 +182,4 @@ void printInSerial(sensorData sensorData) {
     Serial.println("C");
   
 }
+
