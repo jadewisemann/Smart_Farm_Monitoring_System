@@ -1,32 +1,35 @@
+//ui
 import { Link, TextField, Button} from "@mui/material";
-import { useState } from "react";
+// components
 import { requestSignUp } from "../../services/requestSignUp";
-import { Navigate } from "react-router-dom";
+// hook
+import { useState } from "react";
+import {  useNavigate } from "react-router-dom";
 
 
 export default function SignUpComponent() {
-  // state
+  // hooks
+  const navigate = useNavigate()
+  // internal state
   const [button, setButton] = useState(true);
   const [userId, setUserId] = useState('')
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
+  // msg
   const errorMessage = useState('sign up rejected')
-  // function
+  //function
+  const redirection = () => navigate("/signIn")
   const inputValidation = () => {
     userId.length >= 4 && userEmail.includes('@') && userPassword.length >= 5
       ? setButton(false) : setButton(true)
   }
+
   const handleSubmit = async ({ userId, userEmail, userPassword }) => {
     const response = await requestSignUp({ userId, userEmail, userPassword });
     response?.status === 200
       ? redirection()
       : alert(errorMessage)
   };
-  const redirection = () => { 
-    return (
-      <Navigate to="/signIn" />
-    )
-  }
   return (<>
     <div className="text-5xl font-extrabold mb-[4%]">
       Sign up

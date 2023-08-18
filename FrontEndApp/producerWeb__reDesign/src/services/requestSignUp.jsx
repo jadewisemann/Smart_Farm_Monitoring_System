@@ -8,17 +8,20 @@ export const requestSignUp = async ({ userId, userPassword, userEmail }) => {
   const mock = new MockAdapter(instance);
   const mockResponseData = {};
   mock.onPost(`${baseUrl}/members/login`).reply(200, mockResponseData);
-  try {
-      // const response = await axios.post(`${baseUrl}/members/signup`, {
-      const response = await instance.post(`${baseUrl}/members/signup`, {
-        userId: userId,
-        email: userEmail,
-        password: userPassword,
-      });
-      console.log(response)
-      return response;
-    } catch (error) {
-      console.log(error);
-      return error;
-    }
+  try
+  {
+    // const response = await axios.post(`${baseUrl}/members/signup`, {
+    const response = await instance.post(`${baseUrl}/members/signup`, {
+      userId: userId,
+      email: userEmail,
+      password: userPassword,
+    });
+    console.log(response)
+    return response;
   }
+  catch (error)
+  {
+    console.log(error);
+    return error;
+  }
+}
