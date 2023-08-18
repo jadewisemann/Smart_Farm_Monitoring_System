@@ -5,6 +5,9 @@ import paho.mqtt.client as mqtt
 import ssl
 import subprocess
 
+def onConnect(client, userdata, flags, rc):
+    client.subscribe("smartfarm/images")
+
 
 def takePhoto():
     fileName = f'/home/pi/Pictures/photo_{time.strftime("%Y%m%d-%H%M%S")}.jpg'
@@ -15,13 +18,15 @@ def takePhoto():
 def mqttSetup(username, password, brokerAddress, port):
     client = mqtt.Client()
     client.username_pw_set(username, password)
-    client.tls_set("/home/pi/cameramqtt/sampleCA.pem","/home/pi/cameramqtt/mqttclient.crt","/home/pi/cameramqtt/mqttclient.key", cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLS, ciphers=None)
+    client.tls_set("/etc/ssl/certs/ca-certificates.crt")
     client.connect(brokerAddress, port)
     return client
 
 
 def main(username, password, brokerAddress, targetHour, targetMinute):
     mqttClient = mqttSetup(username, password, brokerAddress, 8883)
+    mqttClient.onConnect = onConnect
+    mqttClient.loop_start()
 
     while True:
         #TIme checking
@@ -46,7 +51,7 @@ def main(username, password, brokerAddress, targetHour, targetMinute):
                 mqttClient.publish(topic, message)
                 print(message)
 
-                # Capture cycle 
+                # Capture cycle
                 time.sleep(60 - time.time() % 60)
 
             except Exception as e:
@@ -56,4 +61,4 @@ def main(username, password, brokerAddress, targetHour, targetMinute):
 
 
 if __name__ == '__main__':
-    main("HyeonseoLee", "****", "9c500c1053df40c795c005da44aee8f0.s2.eu.hivemq.cloud", 18, 14)
+    main("HyeonseoLee", "****", "9c500c1053df40c795c005da44aee8f0.s2.eu.hivemq.cloud", 20, 5)
