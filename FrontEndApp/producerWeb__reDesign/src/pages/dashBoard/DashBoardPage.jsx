@@ -4,7 +4,7 @@ import PropertyList from "./utils/listRendering/PropertyList";
 import ManagementContent from "./components/ManagementContent";
 import {defaultFarm}  from "../../test/testFarmData"
 
-export default function ManagementPage() {
+export default function DashBoardPage() {
 
   function objectToArray(object) {
     const keyList = Object.keys(object);
