@@ -2,7 +2,7 @@ import {  useState } from "react"
 import FarmList from "./utils/listRendering/FarmList";
 import PropertyList from "./utils/listRendering/PropertyList";
 import ManagementContent from "./components/ManagementContent";
-import {defaultFarm}  from "../../../test/testFarmData"
+import {defaultFarm}  from "../../test/testFarmData"
 
 export default function ManagementPage() {
 

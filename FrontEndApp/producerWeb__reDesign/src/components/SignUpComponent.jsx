@@ -1,7 +1,7 @@
 //ui
 import { Link, TextField, Button} from "@mui/material";
 // components
-import { requestSignUp } from "../../services/requestSignUp";
+import { requestSignUp } from "../services/requestSignUp";
 // hook
 import { useState } from "react";
 import {  useNavigate } from "react-router-dom";

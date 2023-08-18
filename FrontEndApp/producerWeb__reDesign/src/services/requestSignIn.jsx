@@ -1,6 +1,7 @@
 import axios from "axios";
 import { baseUrl } from "../api/serverUrl";
 import MockAdapter from "axios-mock-adapter";
+import { setCookie } from "../hooks/reactCookie";
 
 
 
@@ -21,7 +22,8 @@ export const requestSignIn = async ({ userId, userPassword }) => {
       userId: userId,
       password: userPassword,
     });
-    console.log(response)
+    setCookie('accessToken', response.data.accessToken)
+    setCookie('refreshToken', response.data.refreshToken)
     return response;
   }
   catch (error)

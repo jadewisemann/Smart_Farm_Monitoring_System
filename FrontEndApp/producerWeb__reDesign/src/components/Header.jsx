@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom"
-import { useAuth } from "../../../context/AuthContext"
-import SmallAvatar from "../../../components/SmallAvatar"
 
-export default function MainHeader() {
-  const {isLoggedIn} = useAuth()
+export default function Header() {
   return (<>
     <header className="flex flex-col justify-center w-screen h-[10vh]  min-w-max "> {/* header section, full width */}
       <div className=" md:max-w-[1140px] w-[90%] md:w-[80%] mx-auto flex flex-col md:flex-row"> {/* wrapper, set size*/}
@@ -23,12 +20,7 @@ export default function MainHeader() {
           </div>
           <div className="ml-4 hidden md:inline"> {/* login wrapper */}
             <div className="mx-2 font-bold text-md md:text-xl whitespace-nowrap overflow-clip">
-              {
-                isLoggedIn
-                  ? <SmallAvatar/> 
-                  : <Link to="/signin"> sign in </Link>
-              }
-
+              <Link to="/signin"> sign in </Link>
             </div>
           </div>
         </div>

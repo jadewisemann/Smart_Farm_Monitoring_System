@@ -1,4 +1,4 @@
-export default function MainPageContent() {
+export default function Content() {
   return (<>
     <div className="flex flex-col justify-center items-center w-screen"> {/* Content Section */}
       <div className="w-[80vw] h-[90vh] flex flex-col items-center justify-start "> {/* Content Wrapper */}

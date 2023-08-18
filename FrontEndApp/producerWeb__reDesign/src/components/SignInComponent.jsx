@@ -1,16 +1,14 @@
 // ui
 import { Checkbox, TextField, Button, FormControlLabel, Link, } from "@mui/material";
 // component
-import { requestSignIn } from "../../services/requestSignIn";
+import { requestSignIn } from "../services/requestSignIn";
 // hook
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
 
 
 export default function SignInComponent() {
   // hooks
-  const { logIn } = useAuth();
   const navigate = useNavigate();
   // internal state
   const [userId, setUserEmail] = useState('');
@@ -19,15 +17,14 @@ export default function SignInComponent() {
   const errorMessage = 'login failed'
   // functions
   const inputValidation = () => userPassword.length >= 8 ? setButton(false) : setButton(true);
-  const redirection = () => navigate('/managementPage ');
-  
+  const redirection = () => {
+    console.log('redirection')
+    window.location.replace("/dashboardpage");
+  }
   const handleSubmit = async ({ userId, userPassword }) =>
   {
     const response = await requestSignIn({ userId, userPassword });
-    response?.status === 200 ? (
-      logIn(response),
-      redirection()
-    ) : alert(errorMessage)
+    response?.status === 200 ? redirection() : alert(errorMessage)
   }
 
 
