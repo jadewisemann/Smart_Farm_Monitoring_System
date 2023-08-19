@@ -4,13 +4,18 @@ import base64
 import paho.mqtt.client as mqtt
 import ssl
 import subprocess
+from getmac import get_mac_address
+
+
+
+macAddress = get_mac_address()
 
 def onConnect(client, userdata, flags, rc):
     client.subscribe("smartfarm/images")
 
 
 def takePhoto():
-    fileName = f'/home/pi/Pictures/photo_{time.strftime("%Y%m%d-%H%M%S")}.jpg'
+    fileName = f'{time.strftime("%Y%m%d-%H%M%S")}.jpg'
     subprocess.run(["libcamera-still", "-o", fileName])
     return fileName
 
@@ -42,7 +47,8 @@ def main(username, password, brokerAddress, targetHour, targetMinute):
                 with open(photoTaken, "rb") as imageFile:
                     base64Image = base64.b64encode(imageFile.read()).decode('utf-8')
                 data = {
-                    'fileName': photoTaken,
+                    'macAddress': macAddress,
+                    'time': photoTaken,
                     'image': base64Image
                 }
                 message = json.dumps(data)
@@ -61,4 +67,4 @@ def main(username, password, brokerAddress, targetHour, targetMinute):
 
 
 if __name__ == '__main__':
-    main("HyeonseoLee", "****", "9c500c1053df40c795c005da44aee8f0.s2.eu.hivemq.cloud", 20, 5)
+    main("HyeonseoLee", "****", "9c500c1053df40c795c005da44aee8f0.s2.eu.hivemq.cloud", 13, 57)
