@@ -6,8 +6,9 @@ export default function SmallInfoCardSection() {
     ['title4', 'value4'],
     ['title5', 'value5'],
   ]
+  const gridCol = `grid-cols-${smallInfoList.length}`
   return (<> 
-      <div className={`grid grid-cols-${smallInfoList.length} w-full h-full`}>
+      <div className={`grid grid-cols-5 w-full h-full`}>
       
       {
         smallInfoList.map((smallInfoData, index) => (

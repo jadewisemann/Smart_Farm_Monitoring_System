@@ -1,10 +1,13 @@
+// component
 import TitleCard from "./components/cards/TitleCard"
 import LineChart from "./components/charts/LineChart"
 import Heatmap from "./components/charts/Heatmap"
 import PieChart from "./components/charts/PieChart"
 import SmallInfoCardSection from "./components/SmallInfoCardSection"
-import { snapshot_UNSTABLE } from "recoil"
+import WeatherCard from "./components/cards/WeatherCard"
+import CalendarCard from "./components/cards/CalendarCard"
 
+// hooks
 export default function Content() {
   return (<>
     {/* full */}
@@ -35,17 +38,16 @@ export default function Content() {
         </div>
       </div>
       {/* grid row, 12, h-40vh */}
-      <div className="grid grid-cols-2 w-full h-[40vh] ">
+      <div className="grid grid-cols-3 w-full h-[40vh] ">
         {/* span 6 */}
         <div className="py-2 px-4 ">
           <div className="w-full h-full rounded-3xl bg-fuchsia-100">
-            asd 
+            <WeatherCard/>
           </div>
         </div>
         {/* span 6 */}
         <div className="py-2 px-4 ">
           <div className="w-full h-full rounded-3xl bg-blue-50">
-            asd
           </div>
         </div>
       </div>
