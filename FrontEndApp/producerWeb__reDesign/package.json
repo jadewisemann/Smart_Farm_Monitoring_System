@@ -20,6 +20,7 @@
     "@nivo/calendar": "^0.83.0",
     "@nivo/heatmap": "^0.83.0",
     "@nivo/line": "^0.83.0",
+    "@nivo/pie": "^0.83.0",
     "axios": "^1.4.0",
     "classnames": "^2.3.2",
     "react": "^18.2.0",

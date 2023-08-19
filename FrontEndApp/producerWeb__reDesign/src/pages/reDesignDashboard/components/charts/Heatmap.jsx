@@ -332,7 +332,7 @@ const data = [
   }
 ]
 
-export const Heatmap = () => (
+const Heatmap = () => (
     <ResponsiveHeatMap
         data={data}
         margin={{ top: 60, right: 90, bottom: 60, left: 90 }}
@@ -388,3 +388,5 @@ export const Heatmap = () => (
         ]}
     />
 )
+
+export default Heatmap
