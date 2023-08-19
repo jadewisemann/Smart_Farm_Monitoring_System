@@ -3,7 +3,7 @@ import Item from "./Item"
 
 export default function Aside() {
   return (<>
-    <div className=" w-full h-full pt-2 flex-col">
+    <div className=" w-full h-full  pt-8 flex-col ">
       <Item title={'name'}/>
       <Item title={'home'}/>
       <Item title={'farm'}/>
