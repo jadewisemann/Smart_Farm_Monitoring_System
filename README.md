@@ -12,6 +12,13 @@
 
 ---
 
+### 🧑‍🤝‍🧑 맴버구성
+ - 팀장  : 정유진 - Front-end
+ - 팀원1 : 박하운 - Back-end
+ - 팀원2 : 이현서 - Sensor
+
+---
+
 ### *️⃣ 개발 환경
 
 (추가 부탁해요)
@@ -21,9 +28,20 @@
 - ORM : H2 database
 - DB : MySQL
 - Arduino
-
+- Raspberry pi
+- hivemq
 ---
 
 ### ✔️ 주요 기능
 
-- 
+#### Front-end
+
+
+#### Back-end
+
+
+#### Sensor <a href="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/wiki/Sensor">상세보기</a>
+-  IoT 데이터 전송 보안 향상을 위한 TLS 인증 MQTT 통신
+
+
+
