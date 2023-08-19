@@ -5,6 +5,7 @@ import paho.mqtt.client as mqtt
 import ssl
 import subprocess
 from getmac import get_mac_address
+import config
 
 
 
@@ -29,6 +30,8 @@ def mqttSetup(username, password, brokerAddress, port):
 
 
 def main(username, password, brokerAddress, targetHour, targetMinute):
+    
+    
     mqttClient = mqttSetup(username, password, brokerAddress, 8883)
     mqttClient.onConnect = onConnect
     mqttClient.loop_start()
@@ -48,7 +51,7 @@ def main(username, password, brokerAddress, targetHour, targetMinute):
                     base64Image = base64.b64encode(imageFile.read()).decode('utf-8')
                 data = {
                     'macAddress': macAddress,
-                    'time': photoTaken,
+                    'time': photoTaken[:-4],
                     'image': base64Image
                 }
                 message = json.dumps(data)
@@ -57,7 +60,7 @@ def main(username, password, brokerAddress, targetHour, targetMinute):
                 mqttClient.publish(topic, message)
                 print(message)
 
-                # Capture cycle
+                # Capture cycle 
                 time.sleep(60 - time.time() % 60)
 
             except Exception as e:
@@ -67,4 +70,8 @@ def main(username, password, brokerAddress, targetHour, targetMinute):
 
 
 if __name__ == '__main__':
-    main("HyeonseoLee", "****", "9c500c1053df40c795c005da44aee8f0.s2.eu.hivemq.cloud", 13, 57)
+    userName = config.mqttUserName
+    password = config.mqttPassword
+    brokerAddress = config.mqttBrokerAddress
+    
+    main(userName, password, brokerAddress, 15, 6)
