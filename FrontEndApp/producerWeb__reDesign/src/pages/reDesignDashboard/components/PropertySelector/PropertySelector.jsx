@@ -19,7 +19,7 @@ export default function PropertySelector({ setSelectedProperty, selectedFarm }) 
   }
 
   return (<>
-    <div className="h-full" style={ !selectedFarm && {visibility: 'hidden'}}>
+    <div className="h-full">
       {
         propertyList.map((property, index) => (
           <PropertyButton property={property} key={index}

@@ -1,3 +1,5 @@
+import WeatherCard from "./cards/WeatherCard"
+
 export default function SmallInfoCardSection() {
   const smallInfoList = [
     ['title1', 'value1'],
@@ -8,8 +10,7 @@ export default function SmallInfoCardSection() {
   ]
   const gridCol = `grid-cols-${smallInfoList.length}`
   return (<> 
-      <div className={`grid grid-cols-5 w-full h-full`}>
-      
+    <div className={`grid grid-cols-5 w-full h-full`}>
       {
         smallInfoList.map((smallInfoData, index) => (
           <div className="px-4 py-2 pt-4" key={index}>
@@ -24,7 +25,6 @@ export default function SmallInfoCardSection() {
           </div>
         ))
       }
-      
       </div>
   </>)
 }

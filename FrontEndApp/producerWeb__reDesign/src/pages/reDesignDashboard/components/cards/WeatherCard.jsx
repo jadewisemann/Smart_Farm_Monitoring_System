@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 export default function WeatherCard() {
-  const API_KEY = import.meta.env.REACT_APP_OPEN_WEATHER_API_KEY;
+  const API_KEY = import.meta.env.VITE_OPEN_WEATHER_API_KEY
+  console.log('API_KEY', API_KEY)
+  
   let [weatherData, setWeatherData] = useState("");
 
   
@@ -12,7 +14,6 @@ export default function WeatherCard() {
           getWeather(lat, lon);
       });
   },[])  // 처음 렌더링 시에 경도와 위도를 받아와 getWeather function을 호출
-  
   const getWeather = async (lat, lon) => {   
     try
     {
@@ -55,16 +56,12 @@ export default function WeatherCard() {
         <div className='text-2xl font-bold'>
           {weatherData.currentTemp}°C           
         </div>
-        {/* min - max temp */}
-        <div className='text-2xl font-bold'>
-          {weatherData.minTemp} - {weatherData.maxTemp} °C           
-        </div>
         {/* status */}
         <div className='text-xl font-bold'>
           {weatherData.status}
         </div>
         {/* weather icon */}
-        <div className="w-full bg-red-100">
+        <div className="w-full ">
           <div className="w-fit mx-auto">
             <img src={weatherData.icon} />
           </div>
