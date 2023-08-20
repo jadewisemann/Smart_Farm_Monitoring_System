@@ -5,6 +5,7 @@ import DashBoardPage from "./pages/dashBoard/DashBoardPage";
 import ReDesignDashBoardPage from "./pages/reDesignDashboard/reDesignDashBoardPage";
 import NotFound from "./pages/notFound/NotFound";
 import FarmTable from "./pages/farnTable/FarmTable";
+import AddDevice from "./pages/addDevice/AddDevice"
 
 import { Route, Routes, BrowserRouter, Navigate, } from "react-router-dom";
 import { getCookie } from "./hooks/reactCookie";
@@ -30,7 +31,8 @@ function App() {
               <Route path="/dashboardpage" element={isLogin ? <DashBoardPage />  : <Navigate to="/signin"/>} />
               <Route path="/redesigndashboardpage" element={isLogin ? <ReDesignDashBoardPage /> : <Navigate to="/signin" />} />
               <Route path="*" element={<NotFound /> } />        
-              <Route path="/farmtable" element={isLogin? <FarmTable /> : <Navigate to="/signin"/> } />        
+              <Route path="/farmtable" element={isLogin? <FarmTable /> : <Navigate to="/signin"/> } />       
+              <Route path="/addDevice" element={isLogin? <AddDevice /> : <Navigate to="/signin"/> } />       
             </Routes>  
           </BrowserRouter>
         </div>
