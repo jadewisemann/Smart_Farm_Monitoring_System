@@ -6,6 +6,9 @@ import ReDesignDashBoardPage from "./pages/reDesignDashboard/reDesignDashBoardPa
 import NotFound from "./pages/notFound/NotFound";
 import FarmTable from "./pages/farnTable/FarmTable";
 import AddDevice from "./pages/addDevice/AddDevice"
+import FindID from "./pages/findID/FIndID";
+import FindPassword from "./pages/findPassword/FindPassword";
+import ChangePassword from "./pages/changePassword/ChangePassword";
 
 import { Route, Routes, BrowserRouter, Navigate, } from "react-router-dom";
 import { getCookie } from "./hooks/reactCookie";
@@ -33,6 +36,9 @@ function App() {
               <Route path="*" element={<NotFound /> } />        
               <Route path="/farmtable" element={isLogin? <FarmTable /> : <Navigate to="/signin"/> } />       
               <Route path="/addDevice" element={isLogin? <AddDevice /> : <Navigate to="/signin"/> } />       
+              <Route path="/findid" element={!isLogin? <FindID /> : <Navigate to="/signin"/> } />       
+              <Route path="/findpassword" element={!isLogin? <FindPassword /> : <Navigate to="/signin"/> } />       
+              <Route path="/changepassword" element={!isLogin? <ChangePassword /> : <Navigate to="/signin"/> } />       
             </Routes>  
           </BrowserRouter>
         </div>

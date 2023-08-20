@@ -4,10 +4,68 @@ import Content from "./Content"
 import FarmAside from "./components/FarmAside/FarmAside"
 import PropertySelector from "./components/PropertySelector/PropertySelector";
 // hooks
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { selectClasses } from "@mui/material";
+import AxiosApi from "../../api/AxiosApi";
+
 
 export default function ReDesignDashBoardPage() {
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  async function fetchData() { 
+    try {
+      const response = await AxiosApi.get('/home/data', );
+      console.log('JSON.stringify(response)', JSON.stringify(response))
+      console.log('response', response)
+    } catch (error) {
+      error.status === 500
+        ? console.log(error.status)
+        : {}
+      console.error("데이터 가져오기 실패:", error);
+    }
+  }
+  
+  // useEffect(() => {
+  //   fetchLatestData();
+  // }, []);
+
+  // async function fetchLatestData() { 
+  //   try {
+  //     const response = await AxiosApi.get('/device/lastest', );
+  //     console.log('response', response)
+  //   } catch (error) {
+  //     error.status === 500
+  //       ? console.log(error.status)
+  //       : {}
+  //     console.error("데이터 가져오기 실패:", error);
+  //   }
+  // }
+  
+  
+
+  // const deviceInfo = {
+  //   "farmLabels": ["사과"],
+  //   "macAddresses": ["d8:3a:dd:27:ec:e0"]  
+  // }
+  // useEffect(() => {
+  //   addDevice();
+  // }, []);
+
+  // async function addDevice() {
+  //   try {
+  //     const response = await AxiosApi.post('/home/device', deviceInfo);
+  //     console.log('response', response)
+  //   } catch (error) {
+  //     error.status === 500
+  //       ? console.log(error.status)
+  //       :{}
+  //     console.error("데이터 가져오기 실패:", error);
+  //   }
+  // }
+
   const [selectedFarm, setSelectedFarm] = useState();
   const [selectedProperty, setSelectedProperty] = useState()
   return (<>

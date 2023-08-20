@@ -1,18 +1,15 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+
 import AxiosApi from '../../api/AxiosApi';
+import axios from 'axios';
 
-const DATA_API = '/home/farmLabel' 
 
-const testData = [
-  { 'mac_address': 1, 'farm': 1 },
-  { 'mac_address': 2, 'farm': 2 },
-  { 'mac_address': 3, 'farm': 3 },
-  { 'mac_address': 4, 'farm': 4 },
-  { 'mac_address': 5, 'farm': 5 },
-  { 'mac_address': 6, 'farm': 6 },
-  { 'mac_address': 7, 'farm': '' },
-];
+const DATA_API = ''
+
+const testData = {
+  "farmLabels": ["1","2","3","4","5","6",],
+  "macAddresses": ["d11","d12","d13","d14","d15", ]
+}
 
 export default function FarmTable() {
   const [data, setData] = useState([]);
@@ -26,22 +23,41 @@ export default function FarmTable() {
 
   
   useEffect(() => {
-    fetchData();
-  }, []);
-
-  useEffect(() => {
     setFarms([...new Set(data.map((item) => item.farm))]);
   }, [data]);
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+
   async function fetchData() {
     try {
-      const response = await AxiosApi.get('/home/data');
+      const response = await axios.get("서버 주소");
       setData(response.data);
     } catch (error) {
       console.error("데이터 가져오기 실패:", error);
       setData(testData)
     }
   }
+
+  // useEffect(() => {
+  //   fetchOriginalData();
+  // }, []);
+
+  // async function fetchOriginalData() { 
+  //   try {
+  //     const response = await AxiosApi.get('/home/data', );
+  //     console.log('JSON.stringify(response)', JSON.stringify(response))
+  //     console.log('response', response)
+  //     setData(response.data);
+  //   } catch (error) {
+  //     error.status === 500
+  //       ? console.log(error.status)
+  //       : {}
+  //     console.error("데이터 가져오기 실패:", error);
+  //   }
+  // }
 
   function handleCheckboxClick(mac_address) {
     setSelected((prevSelected) =>
@@ -58,15 +74,15 @@ export default function FarmTable() {
         farm: newFarm,
       }));
 
-    setEditedData((prevEditedData) => {
-      // 기존 선택된 mac_address의 데이터를 필터링합니다.
-      const filteredData = prevEditedData.filter(
-        (item) => !prevSelected.includes(item.mac_address)
-      );
+      setEditedData((prevEditedData) => {
+        // 기존 선택된 mac_address의 데이터를 필터링합니다.
+        const filteredData = prevEditedData.filter(
+          (item) => !prevSelected.includes(item.mac_address)
+        );
 
-      // 선택된 mac_address의 최신 데이터와 함께 업데이트합니다.
-      return [...filteredData, ...updatedData];
-    });
+        // 선택된 mac_address의 최신 데이터와 함께 업데이트합니다.
+        return [...filteredData, ...updatedData];
+      });
 
       // 모든 선택이 적용된 후 선택 항목을 클리어합니다.
       return [];
@@ -78,13 +94,11 @@ export default function FarmTable() {
     setNewFarmName('');
     setShowModal(false);
   }
+
   async function handleSubmit() {
     try {
       // 서버에 수정된 데이터를 업데이트하도록 한 API 호출. 필요한 것에 따 URL 및 메소드 변경
-      await AxiosApi.put(DATA_API, {
-        "farmLabels": ["당근"],
-        "macAddresses": ["d8:3a:dd:27:ec:e0"]
-      });
+      await axios.put(DATA_API, editedData);
       // 성공적으로 수정된 데이터를 data state에 반영
       setData((prevData) =>
         prevData.map((item) => {
@@ -101,28 +115,6 @@ export default function FarmTable() {
       console.error("데이터 제출 실패:", error);
     }
   }
-
-  // async function handleSubmit() {
-  //   editedData
-  //   try {
-  //     // 서버에 수정된 데이터를 업데이트하도록 한 API 호출. 필요한 것에 따 URL 및 메소드 변경
-  //     await axios.put(DATA_API, editedData);
-  //     // 성공적으로 수정된 데이터를 data state에 반영
-  //     setData((prevData) =>
-  //       prevData.map((item) => {
-  //         const updatedItem = editedData.find(
-  //           (edit) => edit.mac_address === item.mac_address
-  //         );
-  //         return updatedItem ? updatedItem : item;
-  //       })
-  //     );
-  //     console.log(data)
-  //     // 거래 끝난 후 수정된 데이터를 검증하는 작업 마치기
-  //     setEditedData([]);
-  //   } catch (error) {
-  //     console.error("데이터 제출 실패:", error);
-  //   }
-  // }
   return (
     <div className="relative">
       <table className="table-auto border-collapse border border-green-800">

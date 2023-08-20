@@ -11,7 +11,9 @@ const AxiosApi = axios.create({
 AxiosApi.interceptors.request.use(
   config  => {
     const accessToken = getCookie('accessToken');
+    console.log('axios interceptor, accessToken', accessToken)
     const refreshToken = getCookie('refreshToken');
+    console.log('axios interceptor, refreshToken', refreshToken)
     if (!accessToken || !refreshToken) {
       config.headers.accessToken = null;
       config.headers.refreshToken = null;
@@ -20,7 +22,7 @@ AxiosApi.interceptors.request.use(
 
     if (config.headers && accessToken && refreshToken ) {
       config.headers.authorization = `Bearer ${accessToken}`;
-      config.headers.refreshToken = `Bearer ${refreshToken}`;
+      config.headers.Accept = "*/*, application/json, text/plain";
       return config;
     }
     // Do something before request is sent

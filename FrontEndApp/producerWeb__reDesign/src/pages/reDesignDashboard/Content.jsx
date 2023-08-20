@@ -42,7 +42,6 @@ export default function Content() {
         {/* span 6 */}
         <div className="py-2 px-4 ">
           <div className="w-full h-full rounded-3xl bg-fuchsia-100">
-            <WeatherCard/>
           </div>
         </div>
         {/* span 6 */}
