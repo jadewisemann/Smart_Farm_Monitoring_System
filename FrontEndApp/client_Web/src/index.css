@@ -19,10 +19,7 @@
   }
 }
 @layer components {
-  .logo-text {
-    @apply font-extrabold first-letter:text-3xl md:first-letter:text-5xl first-letter:not-italic;
-  }
-  .nav-item {
-    @apply mx-4 md:mx-4;
+  .nav-button {
+    @apply font-extrabold text-3xl  mx-4 p-4 border-4 border-black;
   }
 }
