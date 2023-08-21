@@ -20,8 +20,11 @@
     "@mui/x-data-grid": "^6.11.2",
     "@mui/x-date-pickers": "^6.11.2",
     "@nivo/calendar": "^0.83.0",
+    "@nivo/line": "^0.83.0",
+    "@nivo/radar": "^0.83.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-fullpage": "^0.1.1",
     "react-router-dom": "^6.14.2",
     "tailwind-scrollbar-hide": "^1.1.7"
   },

@@ -26,7 +26,7 @@ export default function SignUpPage() {
   return (<>
     <div className="flex flex-col items-center w-screen h-full">
       <Header/> 
-      <div className="w-[80vw] h-[80vh]  flex items-center"> {/* Content Section */}
+      <div className="w-[80vw] h-[80vh] mt-[12vh] flex items-center"> {/* Content Section */}
         <div className="w-full lg:w-[50%] h-full flex flex-col items-center border-2 border-black justify-center px-8" > {/* half page */}
           <SignUpComponent />
         </div>

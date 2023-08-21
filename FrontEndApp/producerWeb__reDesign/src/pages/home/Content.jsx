@@ -1,41 +1,71 @@
+import { Link } from "react-router-dom";
+
 export default function Content() {
+    const page1styles = {
+    backgroundColor: 'rgb(134, 239, 172)',
+    backgroundImage: 'radial-gradient(at 99% 67%, rgb(245, 245, 244) 0, transparent 78%), radial-gradient(at 96% 45%, rgb(167, 139, 250) 0, transparent 100%), radial-gradient(at 57% 74%, rgb(68, 64, 60) 0, transparent 0%), radial-gradient(at 100% 35%, rgb(22, 78, 99) 0, transparent 4%), radial-gradient(at 75% 1%, rgb(22, 163, 74) 0, transparent 100%), radial-gradient(at 43% 48%, rgb(82, 82, 82) 0, transparent 0%)',
+
+  };
   return (<>
-    <div className="flex flex-col justify-center items-center w-screen"> {/* Content Section */}
-      <div className="w-[80vw] h-[90vh] flex flex-col items-center justify-start "> {/* Content Wrapper */}
+    {/* Content full page, w full h fit */}
+    <div className="flex flex-col justify-center items-center w-full h-fit" style={page1styles}>
+      {/* page 1 */}
+        <div className=" h-[100vh] flex flex-col items-center justify-center w-[80vw]">
+          <div className="text-[180px] text-center leading-none tracking-normal font-worksans font-black">
+            <span className="tracking-wide">Future&nbsp;&nbsp;&nbsp;of</span>  <br/>
+            Agriculture <br />
+            Start &nbsp;&nbsp;here
+          </div>
+        </div>
+        {/* page 2 */}
+        <div className="h-[100vh] flex flex-col items-center justify-center">
+          <div className="text-[140px] text-center leading-none tracking-normal font-worksans font-black ">
+            <span className="text-[100px]">The &nbsp;</span> <br />
+            <span className="italic text-[160px] mr-4">Easiest</span> way <br />
+            <span className="text-[120px]">to</span > <span className="text-[160px] uppercase">monitor</span> <br />
+            <span className="text-[140px]">your farm</span>
+          </div>
+        </div>
+        {/* page 3 */}
+        <div className="h-[100vh] flex flex-col items-center justify-center">
+          <div className="text-[180px] ml-56 leading-none tracking-normal font-worksans font-black ">
+          <span className="text-[140px] italic">less </span> Energy <br />
+          <span className="text-[140px] italic">less </span> Effort <br />
+          <span className="text-[140px] italic">less </span>  Pollution
+          </div>
+        </div>
+       {/* page 4 */}
+        <div className="h-[100vh] flex flex-col items-center justify-center">
+          <div className="text-[140px] text-center leading-none tracking-normal font-worksans font-black ">
+          <span className="text-[220px] uppercase leading-3">boost</span>
+          <br />
+          <span className="tracking-widest text-[100px] uppercase">your</span>
+          <br />
+          <span className="text-[160px] uppercase">efficiency</span>
+          <br />
+          <span className="text-[100px]">with &nbsp;</span>
+          <span className="uppercase italic text-[160px]">us</span>
+          </div>
+        </div>
+      {/* page 5 */}
+        <div className="h-[100vh] flex flex-col items-center justify-center">
+          <div className="text-[180px] text-center leading-none tracking-normal font-worksans font-black ">
+          The most <br />
+          intelligent <br />
+          way to farm <br />
+          </div>
+        </div>
+      {/* page 6 */}
+        <div className="h-[100vh] flex flex-col items-center justify-center">
+          <div className="text-[260px] text-center leading-none tracking-normal font-worksans font-black ">
+          FAV
+          
+        </div>
         
-        <div className="flex flex-col items-start md:items-end text-3xl font-bold mt-[10%]"> {/* hero text wrapper */}
-          <div className="flex  flex-col md:flex-row items-start md:items-end ">
-            We believe
-            <div className=" md:ml-4 text-7xl sm:text-8xl font-extrabold italic before:content-['We believe'] before:text-3xl">Agriculture</div>
-          </div>
-          <div className="flex mt-4 flex-col md:flex-row items-start md:items-end">can become more
-            <div className="md:ml-4 text-7xl sm:text-8xl font-extrabold italic">Valuable</div>
-          </div>
-          <div className="flex mt-4 flex-col md:flex-row items-start md:items-end italic">in the
-            <div className="md:ml-4 text-7xl sm:text-8xl font-extrabold">Future</div>
-          </div>
+        <div className="text-4xl uppercase italic mt-16 mb-[-64px] font-extrabold py-4 px-8  border-4 border-gray-500">
+          <Link to="/signin">Click here to start</Link>
         </div>
-        <div className="mt-[15%]  h-[5vh] w-[90vw] flex justify-center al"> {/* scroll wrapper */}
-          <div className=" flex flex-col items-center text-2xl font-extrabold h-fit">
-            <div className="mb-4"> scroll to see how we archive that </div>
-            <div className="w-12 h-12 flex items-center justify-center bg-yellow-400 rounded-full">↓</div>
-          </div>
         </div>
       </div>
-      <div className="flex w-screen"> {/* Content */}
-        <div className="w-[60%] flex flex-col justify-center"> {/* Paragraph */}
-          <p className="text-6xl font-extrabold">
-            미인을 만천하의
-            <br />놀이 능히 이것이다
-          </p>
-          <p className="w-[80%]">
-            청춘을 길지 든 아니한 못할 인간에 곧 때까지 것이다. 따뜻한 꾸며 인류의 품었기 때에, 두기 끝까지 이상, 것은 말이다. 때까지 설레는 못하다 기관과 맺어, 인간에 열매를 그리하였는가? 하여도 사람은 역사를 있다. 힘차게 가는 그들의 주는 것은 이것이다. 인간의 이 군영과 보라. 만물은 인생을 거친 그것은 크고 황금시대다. 오아이스도 피부가 그들의 위하여서. 꽃이 하는 노래하며 황금시대를 사막이다. 이상, 인생에 그들의 대중을 이것이야말로 실로 칼이다
-          </p>
-        </div>
-        <div> {/* img */}
-          <img src="img/farm_img_1.jpg" />
-        </div>
-      </div>
-    </div>
   </>)
 }
