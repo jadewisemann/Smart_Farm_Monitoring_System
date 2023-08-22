@@ -12,14 +12,14 @@
 DHT dht(dhtPin, dhtType);
 WiFiClientSecure wifiClient;
 
-const char* mqttServer = "9c500c1053df40c795c005da44aee8f0.s2.eu.hivemq.cloud";
+const char* mqttServer[] = {"5fef5d8821b044b1afd39bd5b19388bc.s1.eu.hivemq.cloud", "9c500c1053df40c795c005da44aee8f0.s2.eu.hivemq.cloud" };
 const int mqttPort = 8883;
 const char* ntpServer = "kr.pool.ntp.org";
 const long  gmtOffsetSeconds = 9 * 3600;
 const int   daylightOffsetSeconds = 0;
 String macAddress = WiFi.macAddress();
 int photoResistor = A1;
-
+int currentBrokerIndex = 0;
 
 //root certificate
 static const char *root_ca PROGMEM = R"EOF(
@@ -71,7 +71,7 @@ void setup(void) {
   dht.begin();
   setupWifi();
   configTime(gmtOffsetSeconds, daylightOffsetSeconds, ntpServer);
-  mqttClient.setServer(mqttServer, mqttPort);
+  mqttClient.setServer(mqttServer[0], mqttPort);
   wifiClient.setInsecure();
   wifiClient.setCACert(root_ca);
   Serial.println("MQTT client initializing!");  
@@ -100,22 +100,44 @@ void maintainConnection() {
     delay(500);
     Serial.print(".");
   }
+  Serial.println("Success connected to WiFi");
+}
 
+int mqttBrokerIndex = 0;
+int mqttConnectAttempt = 0;
+const int mqttBrokerCount = sizeof(mqttServer) / sizeof(mqttServer[0]);
+
+void connectMqtt() {
   while (!mqttClient.connected()) {
-    Serial.print("Attempting MQTT connection...");
+    mqttConnectAttempt++;
+    Serial.printf("MQTT connection try: %d회\n", mqttConnectAttempt);
+    mqttClient.setServer(mqttServer[mqttBrokerIndex], mqttPort);
+
     if (mqttClient.connect("UniqueClientID", mqttUsername, mqttPassword)) {
-      Serial.println("connected");
+      Serial.println("success to connect Mqtt");
+      mqttConnectAttempt = 0;
+      break;
     } else {
-      Serial.print("failed, rc=");
-      Serial.print(mqttClient.state());
-      Serial.println(" try again in 5 seconds");
-      delay(5000);
+      Serial.printf("failed to connect rc=%d\n", mqttClient.state());
+      if (mqttConnectAttempt >= 5) {
+        Serial.println("change Mqtt broker");
+        mqttConnectAttempt = 0;
+        if (mqttBrokerIndex < mqttBrokerCount - 1) {
+          mqttBrokerIndex++;
+        } else {
+          mqttBrokerIndex = 0;
+        }
+      } else {
+        Serial.println("try again in 5 seconds...");
+        delay(5000);
+      }
     }
   }
 }
 
 void loop() {
   maintainConnection();
+  connectMqtt();
   mqttClient.loop();
   char currentTime[20];
   getTimeString(currentTime, sizeof(currentTime));
