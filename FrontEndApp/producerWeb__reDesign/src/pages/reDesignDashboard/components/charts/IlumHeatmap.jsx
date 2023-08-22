@@ -155,7 +155,7 @@ const defaultData = [
 ]
 
 
-const TempHeatmap = ({data = defaultData}) => (
+const IlumHeatmap = ({data = defaultData}) => (
   <ResponsiveHeatMap
       isInteractive={false}
         data={data}
@@ -186,9 +186,9 @@ const TempHeatmap = ({data = defaultData}) => (
         }}
         colors={{
             type: 'sequential',
-            scheme: 'oranges',
-            minValue: -10,
-            maxValue: 50
+            scheme: 'yellow_orange_brown',
+            minValue: 200,
+            maxValue: 3000
         }}
         emptyColor="#555555"
         legends={[
@@ -197,4 +197,4 @@ const TempHeatmap = ({data = defaultData}) => (
     />
 )
 
-export default TempHeatmap
+export default IlumHeatmap 

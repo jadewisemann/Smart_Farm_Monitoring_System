@@ -3,33 +3,33 @@ import { ResponsivePie } from '@nivo/pie'
 const data =
 [
   {
-    "id": "sass",
-    "label": "sass",
-    "value": 154,
+    "id": "Healthy",
+    "label": "Healthy",
+    "value": 824,
     "color": "hsl(20, 70%, 50%)"
   },
   {
-    "id": "erlang",
-    "label": "erlang",
+    "id": "little brown leaf",
+    "label": "little brown leaf",
     "value": 372,
     "color": "hsl(340, 70%, 50%)"
   },
   {
-    "id": "make",
-    "label": "make",
+    "id": "illness",
+    "label": "illness",
     "value": 385,
     "color": "hsl(314, 70%, 50%)"
   },
   {
-    "id": "rust",
-    "label": "rust",
+    "id": "weed",
+    "label": "weed",
     "value": 257,
     "color": "hsl(20, 70%, 50%)"
   },
   {
-    "id": "css",
-    "label": "css",
-    "value": 569,
+    "id": "bugs",
+    "label": "bugs",
+    "value": 169,
     "color": "hsl(327, 70%, 50%)"
   }
 ]
@@ -38,11 +38,19 @@ const data =
 
 const PieChart = () => (
     <ResponsivePie
+        theme={{
+            labels: {
+                text: {
+                    fontSize: 16,
+
+                },
+            },
+        }}
         data={data}
-        margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+        margin={{ top: 40, right: 80, bottom: 40, left: 80 }}
         startAngle={-8}
         sortByValue={true}
-        innerRadius={0.25}
+        innerRadius={0}
         activeOuterRadiusOffset={8}
         colors={{ scheme: 'pastel2' }}
         borderWidth={1}
@@ -57,7 +65,7 @@ const PieChart = () => (
         }}
         arcLinkLabelsSkipAngle={10}
         arcLinkLabelsTextColor="#333333"
-        arcLinkLabelsThickness={2}
+        arcLinkLabelsThickness={4}
         arcLinkLabelsColor={{ from: 'color' }}
         arcLabelsSkipAngle={10}
         arcLabelsTextColor={{
@@ -65,7 +73,7 @@ const PieChart = () => (
             modifiers: [
                 [
                     'darker',
-                    2
+                    12
                 ]
             ]
         }}
@@ -140,29 +148,7 @@ const PieChart = () => (
             }
         ]}
         legends={[
-            {
-                anchor: 'bottom',
-                direction: 'row',
-                justify: false,
-                translateX: 0,
-                translateY: 56,
-                itemsSpacing: 0,
-                itemWidth: 100,
-                itemHeight: 18,
-                itemTextColor: '#999',
-                itemDirection: 'left-to-right',
-                itemOpacity: 1,
-                symbolSize: 18,
-                symbolShape: 'circle',
-                effects: [
-                    {
-                        on: 'hover',
-                        style: {
-                            itemTextColor: '#000'
-                        }
-                    }
-                ]
-            }
+            
         ]}
     />
 ) 

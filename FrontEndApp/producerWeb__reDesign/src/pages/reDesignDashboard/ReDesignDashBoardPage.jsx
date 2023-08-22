@@ -7,17 +7,19 @@ import FarmAside from "./components/FarmAside/FarmAside"
 import { useEffect, useState } from "react";
 import AxiosApi from "../../api/AxiosApi";
 
+// dummy data
+import { dummyDeviceData, dummyFarmData } from "./dummyData";
 
 export default function ReDesignDashBoardPage() {
   // state
-  const [farmList, setFarmList] = useState(['apple','banana','pear','peach','Guava','Melon','water melon','farm2','farm3'])
-  const [deviceData, setDeviceData] = useState({})
-  const [selectedFarm, setSelectedFarm] = useState();
-  console.log('selectedFarm,', selectedFarm,)
-  const [farmData, setFarmData] = useState([])
-  
-  
+  const [farmList, setFarmList] = useState([])
+  const [deviceData, setDeviceData] = useState()
 
+  // const [deviceData, setDeviceData] = useState()
+  const [selectedFarm, setSelectedFarm] = useState();
+  const [farmData, setFarmData] = useState([])
+  const defDeviceData = [dummyFarmData]
+  const defFarmData = dummyDeviceData
   // fetch Mac and Farm Info
   useEffect(() => {
     fetchDeviceData();
@@ -27,76 +29,32 @@ export default function ReDesignDashBoardPage() {
     // get data = [  {  "farmLabels": ["string"], "macAddresses": ["string"]  },  ]
     try{
       const response = await AxiosApi.get('/home/data', );
-      const farmSet = new Set(response.data.farmLabels)
+      const farmSet = new Set(response.data[0].farmLabels)
       setFarmList([...farmSet])
       setDeviceData(response.data)
     } catch (error) {
-      error.status === 500
-        ? console.log(error.status)
-        : {}
       console.error("데이터 가져오기 실패:", error);
+      const farmSet = new Set(defDeviceData[0].farmLabels)
+      setFarmList([...farmSet])
+      setDeviceData(defDeviceData)
     }
   }
 
   // fetch latest Data
-  function processData(array) {
-    const result = {};
-    array.forEach(object => {
-      const { dataId, macAddress, temperatureCelsius, humidity, illuminance, recordedAt } = object;
-      result[macAddress] = {
-        temperatureCelsius,
-        humidity,
-        illuminance,
-        recordedAt
-      };
-    });
-    return result;
-  }
   useEffect(() => {
     fetchLatestData();
   }, []);
   async function fetchLatestData() { 
-    // [
-    //   {
-    //     "dataId": 0,
-    //     "macAddress": "string",
-    //     "temperatureCelsius": 0,
-    //     "humidity": 0,
-    //     "illuminance": 0,
-    //     "recordedAt": "2023-08-22T06:53:52.218Z"
-    //   } , ...
-    // ]
     try {
       const response = await AxiosApi.get('/device/lastest', );
-      setFarmData(processData(response.data))
+      setFarmData(response.data)
     } catch (error) {
-      error.status === 500
-        ? console.log(error.status)
-        : {}
       console.error("데이터 가져오기 실패:", error);
+      setFarmData(defFarmData)
     }
   }
 
-  // const deviceInfo = {
-  //   "farmLabels": ["사과"],
-  //   "macAddresses": ["d8:3a:dd:27:ec:e0"]  
-  // }
-  // useEffect(() => {
-  //   addDevice();
-  // }, []);
-
-  // async function addDevice() {
-  //   try {
-  //     const response = await AxiosApi.post('/home/device', deviceInfo);
-  //     console.log('response', response)
-  //   } catch (error) {
-  //     error.status === 500
-  //       ? console.log(error.status)
-  //       :{}
-  //     console.error("데이터 가져오기 실패:", error);
-  //   }
-  // }
-
+  
 
 
   return (<>

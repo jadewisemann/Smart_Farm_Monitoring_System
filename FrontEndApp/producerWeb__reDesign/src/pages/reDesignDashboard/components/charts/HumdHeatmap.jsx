@@ -155,7 +155,7 @@ const defaultData = [
 ]
 
 
-const TempHeatmap = ({data = defaultData}) => (
+const HumdHeatmap = ({data = defaultData}) => (
   <ResponsiveHeatMap
       isInteractive={false}
         data={data}
@@ -186,9 +186,9 @@ const TempHeatmap = ({data = defaultData}) => (
         }}
         colors={{
             type: 'sequential',
-            scheme: 'oranges',
-            minValue: -10,
-            maxValue: 50
+            scheme: 'red_yellow_blue',
+            minValue: 0,
+            maxValue: 100
         }}
         emptyColor="#555555"
         legends={[
@@ -197,4 +197,4 @@ const TempHeatmap = ({data = defaultData}) => (
     />
 )
 
-export default TempHeatmap
+export default HumdHeatmap

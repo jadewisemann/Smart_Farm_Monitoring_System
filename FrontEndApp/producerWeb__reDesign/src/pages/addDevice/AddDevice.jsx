@@ -1,12 +1,34 @@
 import { useState } from "react";
-import axios from "axios";
+import AxiosApi from "../../api/AxiosApi";
 
-const POST_API = ''
 
 export default function AddDevice() {
+  // const deviceInfo = {
+  //   "farmLabels": ["사과"],
+  //   "macAddresses": ["d8:3a:dd:27:ec:e0"]  
+  // }
+
+
+  // async function addDevice() {
+  //   try {
+  //     const response = await 
+  //     console.log('response', response)
+  //   } catch (error) {
+  //     error.status === 500
+  //       ? console.log(error.status)
+  //       :{}
+  //     console.error("데이터 가져오기 실패:", error);
+  //   }
+  // }
 
   const [input, setInput] = useState("");
   const [addDeviceList, setList] = useState([]);
+
+  function createDefaultArray(arr) {
+  const length = arr.length;
+  const defaultArray = new Array(length).fill("default");
+  return defaultArray;
+}
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,25 +38,19 @@ export default function AddDevice() {
     }
   };
 
-  const oldHandleSendData = () => {
-    console.log(addDeviceList); // 서버에 보낼 데이터
-  };
 
   const handleSendData = async () => {
     try {
       // 서버의 주소와 요청 방식을 수정해 주세요.
-      const response = await axios.post(POST_API, {
-        data: addDeviceList,
+      const response = await AxiosApi.post('/home/device', {
+        "farmLabels": createDefaultArray(addDeviceList),
+        "macAddresses": [...addDeviceList]  
       });
-
-      console.log(response.data); // 서버에서 받은 응답 결과
+      window.location.reload();
     } catch (error) {
-      console.error("서버 전송 중 에러가 발생했습니다.", error);
+      alert("서버 전송 중 에러가 발생했습니다.");
     }
   };
-  
-  console.log(addDeviceList)
-
   return (
     <div className="container mx-auto mt-10">
       <form onSubmit={handleSubmit} className="flex mb-5">
