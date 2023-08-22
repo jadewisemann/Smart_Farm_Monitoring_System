@@ -1,36 +1,68 @@
 // component
 import TitleCard from "./components/cards/TitleCard"
-import LineChart from "./components/charts/LineChart"
-import Heatmap from "./components/charts/Heatmap"
+import OutTempLineChart from "./components/charts/OutTempLineChart"
+import TempHeatmap from "./components/charts/TempHeatmap"
 import PieChart from "./components/charts/PieChart"
 import SmallInfoCardSection from "./components/SmallInfoCardSection"
-import WeatherCard from "./components/cards/WeatherCard"
-import CalendarCard from "./components/cards/CalendarCard"
+import { useState } from "react"
 
 // hooks
-export default function Content() {
+export default function Content({ selectedFarm, farmData}) {
+  const {humidityData, setHumidityData} = useState([])
+  const { temperatureData, setTemperatureData } = useState([''])
+  const {illuminanceData, setIlluminanceData} = useState([])
+
+  for (var key in farmData[selectedFarm]) {
+    key == 'humidity'
+      ? setHumidityData(farmData[key])
+      : key == 'temperature' ? setTemperatureData(farmData[key])
+        : key == 'illuminance' ? setIlluminanceData(farmData[key]) : {}
+  }
   return (<>
+    <div className={`w-full h-fit flex-col  ${farmData == 0 ? 'flex': 'hidden'}`}>
+      <div className="text-6xl h-[80vh] w-full flex  justify-center items-center font-extrabold uppercase ">
+        choose farm first
+      </div>
+    </div>
     {/* full */}
-    <div className="w-full h-fit flex flex-col ">
+    <div className={`w-full h-fit flex-col ${farmData != 0 ? 'flex': 'hidden'}`}>
       {/* h-20vh */}
       <div  className="h-[20vh]">
         <SmallInfoCardSection/>
       </div>
       {/* grid row, 12, h-40vh */}
       <div className="grid grid-cols-12 w-full h-[40vh] ">
-        {/* span 4 */}
-        <div className="col-span-4 p-4"><TitleCard/></div>
-        {/* span 8 */}
-        <div className="col-span-8 p-4 pl-2">
+        <div className="col-span-4 p-4">
           {/* wrapper */}
-          <div className="w-full h-full bg-yellow-100 rounded-3xl"><LineChart/></div>
+          <div className="w-full h-full bg-yellow-100 rounded-3xl flex flex-col">
+            <div className="w-full h-fit text-3xl font-extrabold mt-4 ml-4 ">
+              Outside Temperature
+            </div>
+            <OutTempLineChart/>
+          </div>
+        </div>
+
+        <div className="col-span-8 p-4">
+          {/* wrapper */}
+          <div className="w-full h-full bg-yellow-100 rounded-3xl flex flex-col">
+            <div className="w-full h-fit text-3xl font-extrabold mt-4 ml-4 ">
+              Farm Temperature
+            </div>
+            <TempHeatmap data={ temperatureData} />
+          </div>
         </div>
       </div>
       {/* grid row, 12, h-40vh */}
       <div className="grid grid-cols-12 w-full h-[40vh] ">
         {/* span 8 */}
         <div className="col-span-8 py-2 px-4 ">
-          <div className="w-full h-full rounded-3xl bg-red-300"><Heatmap/></div>
+          {/* wrapper */}
+          <div className="w-full h-full bg-yellow-100 rounded-3xl flex flex-col">
+            <div className="w-full h-fit text-3xl font-extrabold mt-4 ml-4 ">
+
+            </div>
+            
+          </div>
         </div>
         {/* span 4 */}
         <div className="col-span-4 py-2 px-4">

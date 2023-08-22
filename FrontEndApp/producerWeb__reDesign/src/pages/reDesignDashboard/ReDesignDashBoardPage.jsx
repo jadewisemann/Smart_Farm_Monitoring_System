@@ -2,48 +2,93 @@
 import Aside from "./components/Aside/Aside"
 import Content from "./Content"
 import FarmAside from "./components/FarmAside/FarmAside"
-import PropertySelector from "./components/PropertySelector/PropertySelector";
+
 // hooks
 import { useEffect, useState } from "react";
-import { selectClasses } from "@mui/material";
 import AxiosApi from "../../api/AxiosApi";
 
 
 export default function ReDesignDashBoardPage() {
-
+  // state
+  const [farmList, setFarmList] = useState(['farm1','farm2','farm3'])
+  const [deviveData, setDeviceData] = useState({})
+  
+  // fetch Users Farm Info
   useEffect(() => {
-    fetchData();
+    fetchUserFarmInfo();
   }, []);
 
-  async function fetchData() { 
-    try {
+  async function fetchUserFarmInfo() { 
+    try
+    {
       const response = await AxiosApi.get('/home/data', );
-      console.log('JSON.stringify(response)', JSON.stringify(response))
       console.log('response', response)
-    } catch (error) {
+      const farmSet = new Set(response.farmLabels)
+      setFarmList([...farmSet])
+      setDeviceData(response)
+    }
+    catch (error)
+    {
       error.status === 500
         ? console.log(error.status)
         : {}
       console.error("데이터 가져오기 실패:", error);
     }
   }
-  
-  // useEffect(() => {
-  //   fetchLatestData();
-  // }, []);
 
-  // async function fetchLatestData() { 
-  //   try {
-  //     const response = await AxiosApi.get('/device/lastest', );
-  //     console.log('response', response)
-  //   } catch (error) {
-  //     error.status === 500
-  //       ? console.log(error.status)
-  //       : {}
-  //     console.error("데이터 가져오기 실패:", error);
-  //   }
-  // }
+  const [selectedFarm, setSelectedFarm] = useState();
+
+  // fetch Farm Data
+  const [farmData, setFarmData] = useState([])
+
+  const transformData = (inputArray) => {
+    let tempFarmList = []
+    var outputObj = {};
+    inputArray.forEach(farm => {
+      tempFarmList.push(farm.farmLabels)
+      var farmObj = {};
+      Object.keys(farm).forEach(key => {
+        key !== 'farmLabels'
+          ? farmObj[key] = farm[key] : {}
+      });
+    outputObj[farm.farmLabel] = farmObj;
+    });
+    setFarmData(outputObj)
+  }
+
+  useEffect(() => {
+    fetchLatestData();
+  }, []);
+
+  async function fetchLatestData() { 
+    try {
+      const response = await AxiosApi.get('/device/lastest', );
+      console.log('response', response)
+      transformData(response)
+      // [{farm: farm, humidity: [], }, ]
+    } catch (error) {
+
+      error.status === 500
+        ? console.log(error.status)
+        : {}
+      console.error("데이터 가져오기 실패:", error);
+    }
+  }
+  farmData.length == 0
+    ? setFarmData([
+      {
+        "farmLabels": "farm1",
+        "humidity": [],
+        "temperature": [],
+        "illuminance": []
+      }
+    ]) : {}
+
+
+
+
   
+
   
 
   // const deviceInfo = {
@@ -66,8 +111,8 @@ export default function ReDesignDashBoardPage() {
   //   }
   // }
 
-  const [selectedFarm, setSelectedFarm] = useState();
-  const [selectedProperty, setSelectedProperty] = useState()
+
+
   return (<>
   {/* rounded:2xl, ref: slack */}
     {/* full page */}
@@ -86,16 +131,14 @@ export default function ReDesignDashBoardPage() {
           <div className="flex w-full h-full border-8 box-border rounded-3xl ">
             {/* main-aside , 18vw */}
             <div className="h-full w-[18vw] border-r-8 box-border bg-teal-100 rounded-l-2xl overflow-x-clip overflow-y-auto scrollbar-hide">
-              <FarmAside setSelectedFarm={setSelectedFarm}/>
+              <FarmAside setSelectedFarm={setSelectedFarm} farmList={farmList}/>
             </div>
             {/* main content section, p-4, pl-0 */}
             <div className=" w-full h-full ">
             {/* main content */}
               <div className=" w-full h-full rounded-r-2xl overflow-x-clip overflow-y-auto scrollbar-hide">
-                {/* property selector, 5vh */}
-                <div className="w-full h-[4vh] py-2 border-b-8 box-content"> <PropertySelector setSelectedProperty={setSelectedProperty}/> </div>
                 {/* content */}
-                <Content />
+                <Content selectedFarm={selectedFarm} farmData={farmData}/>
               </div>
             </div>
           </div>

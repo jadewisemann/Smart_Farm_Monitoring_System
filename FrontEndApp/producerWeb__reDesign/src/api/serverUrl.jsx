@@ -1,3 +1,2 @@
-export const baseUrl = "http://165.246.116.17:5000"
-// export const baseUrl = "http://localhost:5000"
+export const baseUrl = "http://smartfarmmonitoringsystem-env.eba-xnzivpcc.ap-northeast-2.elasticbeanstalk.com/"
 export const refreshRequestUrl = 'http://'

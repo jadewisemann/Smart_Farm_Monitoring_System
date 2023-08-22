@@ -9,7 +9,8 @@ export default {
     fontFamily: {
       worksans: ['Work Sans', 'sans-serif'],
       intertight: ['Inter Tight', 'sans-serif'],
-      nanumsqneo: ['NanumSquareNeo-Variable', 'san-serif']
+      nanumsqneo: ['NanumSquareNeo-Variable', 'san-serif'],
+      gothicA1: ['Gothic A1', 'sans-serif']
     },
   },
   plugins: [require("tailwind-scrollbar-hide")],

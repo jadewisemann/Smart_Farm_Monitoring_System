@@ -4,12 +4,10 @@ import { Checkbox, TextField, Button, FormControlLabel, Link, } from "@mui/mater
 import { requestSignIn } from "../services/requestSignIn";
 // hook
 import { useState } from "react"
-import { useNavigate } from "react-router-dom";
 
 
 export default function SignInComponent() {
   // hooks
-  const navigate = useNavigate();
   // internal state
   const [userId, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');

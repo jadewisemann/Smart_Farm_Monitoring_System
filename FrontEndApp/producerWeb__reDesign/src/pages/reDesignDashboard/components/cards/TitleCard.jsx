@@ -1,6 +1,5 @@
 
-export default function TitleCard() {
-  const farmName = 'farm1'
+export default function TitleCard({farmName}) {
   const getAlarm = []; 
   const alert = 'no alert on this farm'
   return (<>

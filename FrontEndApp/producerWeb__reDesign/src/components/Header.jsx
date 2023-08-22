@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-export default function Header() {
+export default function Header({ isSignIn }) {
   return (<>
     <header className="flex flex-col justify-center w-screen h-[10vh]  min-w-max fixed backdrop-blur-2xl"> {/* header section, full width */}
       <div className=" md:max-w-5xl w-[90%] md:w-[80%] mx-auto flex flex-col md:flex-row  h-full "> {/* wrapper, set size*/}
@@ -17,7 +17,12 @@ export default function Header() {
           </div>
           <div className="ml-4 hidden md:inline"> {/* login wrapper */}
             <div className="mx-2 font-bold text-md md:text-xl whitespace-nowrap overflow-clip">
-              <Link to="/signin"> sign in </Link>
+              {
+                isSignIn
+                  ? <Link to="/signup"> sign up </Link>
+                  : <Link to="/signin"> sign in </Link>
+              }
+              
             </div>
           </div>
         </div>
