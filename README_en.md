@@ -34,41 +34,6 @@ This project was started to develop a monitoring system that allows users to rec
 
 ### ✔️ Key Features
 
-| Home Screen | Sign Up | Login
-
-| <img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/5513bb9a-53bf-4c46-81a8-442bc24a8b51"/> | <img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/53451a4e-2b19-48d0-877a-d48db3fdb0e2"/> | <img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/365360d9-c923-4276-aa51-af1ff55d9972"/> |
-| FAV Home Screen | Sign Up Function | Login Function |
-
-| Main Screen | Add Device | Change Farm |
-| --- | --- | --- | --- | --- |
-| <img src=””/> | <img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/2bac3233-0857-480c-b62f-e18a95849c0b"/> | <img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/dae619fd-c50b-4e78-a5f3-f0c66d8cb2a7"/> |
-| Farm monitoring screen | Add devices to collect data | Change farm properties of devices |
-
-### 🗂️ Project Structure
-
-<img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/ad149e3d-b538-49c4-9743-f030125da725"/>
-
----]
-### ✏️ Future plans
-
-- Organize SSG to process and represent data for delivery to consumers based on collected data
-
-- Add packaging QR to improve accessibility for consumers
-
-- Provide consumers with a growing diary of the product
-
-| Main screen | Seller information screen | Product information |
-| --- | --- | --- | --- | --- |
-| <img src=https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/cd67407e-9e43-43b1-a2fb-9a8b4ef8dd9c/> | <img src=https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/1ea8235e-f323-4070-8e26-207d0cb75a31/> | <img src=https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/ea148398-527b-43fa-badd-d863b0bd25fd/> |
-| FAV home screen | Producer information | Product value
-
-| Temperature | Illumination | Humidity
-| --- | --- | --- | --- | --- |
-| <img src=https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/356ed655-4b8b-4db9-af04-db2a719f41d8/> | <img src=https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/9c2ff9e6-40d9-463f-afd3-ed69c0130f08/> | <img src=https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/85d8de08-00e3-43ef-a2f3-9e6c38ce1a88/> |
-| Provides temperature information | Provides illumination information | Provides humidity information |
-
-### ✔️ 주요 기능
-
 | Home Screen | Sign up | Sign in |
 | --- | --- | --- |
 | <img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/5513bb9a-53bf-4c46-81a8-442bc24a8b51"/> | <img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/53451a4e-2b19-48d0-877a-d48db3fdb0e2"/> | <img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/365360d9-c923-4276-aa51-af1ff55d9972"/> |
@@ -79,12 +44,12 @@ This project was started to develop a monitoring system that allows users to rec
 | <img src=””/> | <img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/2bac3233-0857-480c-b62f-e18a95849c0b"/> | <img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/dae619fd-c50b-4e78-a5f3-f0c66d8cb2a7"/> |
 | Farm monitoring screen | Add devices to collect data | Change farm properties of devices |
 
-### 🗂️ 프로젝트 구조
+### 🗂️ Project Structure
 
 <img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/ad149e3d-b538-49c4-9743-f030125da725"/>
 
 ---
-### ✏️ 향후 계획
+### ✏️ Future plans
 
 - Organize SSG to process and represent data for delivery to consumers based on collected data
 
