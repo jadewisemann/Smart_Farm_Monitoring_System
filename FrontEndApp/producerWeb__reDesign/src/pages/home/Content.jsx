@@ -28,7 +28,7 @@ export default function Content() {
         </div>
         {/* page 3 */}
         <div className="h-[100vh] flex flex-col items-center justify-center">
-          <div className="text-[180px] ml-56 leading-none tracking-normal font-worksans font-black ">
+          <div className="text-[160px] leading-none tracking-normal font-worksans font-black ">
           <span className="text-[140px] italic">less </span> Energy <br />
           <span className="text-[140px] italic">less </span> Effort <br />
           <span className="text-[140px] italic">less </span>  Pollution

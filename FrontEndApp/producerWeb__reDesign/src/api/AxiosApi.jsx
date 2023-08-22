@@ -11,9 +11,7 @@ const AxiosApi = axios.create({
 AxiosApi.interceptors.request.use(
   config  => {
     const accessToken = getCookie('accessToken');
-    console.log('axios interceptor, accessToken', accessToken)
     const refreshToken = getCookie('refreshToken');
-    console.log('axios interceptor, refreshToken', refreshToken)
     if (!accessToken || !refreshToken) {
       config.headers.accessToken = null;
       config.headers.refreshToken = null;
