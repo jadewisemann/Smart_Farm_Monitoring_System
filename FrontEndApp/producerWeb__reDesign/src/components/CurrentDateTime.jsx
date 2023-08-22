@@ -31,7 +31,7 @@ const CurrentDateTime = () => {
   };
 
   return (
-    <div className='flex flex-col justify-center items-center w-full h-full  text-5xl font-extrabold font-worksans'>
+    <div className='flex flex-col justify-center items-center w-full h-full  text-3xl font-extrabold font-worksans text-gray-700'>
       <div> {formatDate(currentDate)}</div>
       <div>{currentTime.toLocaleTimeString('ko-KR', timeOptions)}</div>
     </div>

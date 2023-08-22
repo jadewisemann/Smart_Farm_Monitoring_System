@@ -47,23 +47,29 @@ export default function WeatherCard() {
   return (
     <>
       {/* weather wrapper */}
-      <div className="flex flex-col items-center">
-        {/* location  */}
-        <div className='text-3xl font-bold'>
-          {weatherData.name}
-        </div>
-        {/* today temp */}
-        <div className='text-2xl font-bold'>
-          {weatherData.currentTemp}°C           
-        </div>
-        {/* status */}
-        <div className='text-xl font-bold'>
-          {weatherData.status}
+      <div className="flex items-center  justify-center w-full h-full">
+        <div className="flex flex-col items-start pl-4  w-full">
+          {/* today temp */}
+          <div className='text-3xl font-bold'>
+            {weatherData.currentTemp}°C           
+          </div>
+          {/* temp range */}     
+          {/* <div className='text-xl font-bold'>
+            {weatherData.minTemp} ~ {weatherData.maxTemp}°C           
+          </div> */}
+          {/* status */}
+          <div className='text-xl font-medium'>
+            {weatherData.status}
+          </div>
+          {/* location  */}
+          <div className='text-sm font-extrabold'>
+            {weatherData.name}
+          </div>
         </div>
         {/* weather icon */}
         <div className="w-full ">
           <div className="w-fit mx-auto">
-            <img src={weatherData.icon} />
+            <img src={weatherData.icon} className="scale-125"/>
           </div>
         </div>
       </div>

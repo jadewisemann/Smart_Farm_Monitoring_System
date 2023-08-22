@@ -31,6 +31,7 @@ export default function SignUpPage() {
           <SignUpComponent />
         </div>
         <div className="hidden lg:flex border-black border-2 border-l-0 w-[50%] h-full">
+          <div className="w-full h-full bg-[url('/img/farmImg2.jpg')] bg-cover" />
         </div>
       </div>
     </div>

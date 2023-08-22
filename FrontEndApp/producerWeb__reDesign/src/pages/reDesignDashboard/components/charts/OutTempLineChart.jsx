@@ -50,7 +50,7 @@ const OutTempLineChart = ({data = defData}) => (
   <ResponsiveLine
     areaBaselineValue={20}
         data={data}
-        margin={{ top: 50, right: 30, bottom: 80, left: 60 }}
+        margin={{ top: 0, right: 20, bottom: 20, left: 30 }}
         xScale={{ type: 'point' }}
         yScale={{
             type: 'linear',
@@ -63,14 +63,7 @@ const OutTempLineChart = ({data = defData}) => (
         curve="cardinal"
         axisTop={null}
         axisRight={null}
-        axisBottom={{
-            tickSize: 5,
-            tickPadding: 5,
-            tickRotation: 0,
-            legend: 'hours',
-            legendOffset: 36,
-            legendPosition: 'middle'
-        }}
+        axisBottom={null}
         axisLeft={{
             tickSize: 5,
             tickPadding: 5,

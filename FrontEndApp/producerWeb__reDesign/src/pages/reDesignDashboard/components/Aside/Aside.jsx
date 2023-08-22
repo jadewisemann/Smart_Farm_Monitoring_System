@@ -22,14 +22,17 @@ export default function Aside() {
     <div className=" w-full h-full pl-4 pt-8 flex-col">
       <div className="w-full h-full flex flex-col items-center ">
         {/* add device */}
-        <button className="bg-red-100 flex justify-center items-center rounded-xl w-16 h-16" onClick={e=> {e.preventDefault(); navigate('/addDevice')}}> </button>
-        <div className="text-lg font-extrabold text-center leading-6 mt-2 mb-6 uppercase">add <br />device </div>
+        <button className=" flex border-4 border-black justify-center items-center rounded-xl w-16 h-16 mb-4" onClick={e => { e.preventDefault(); navigate('/addDevice') }}>
+        <div className="text-sm font-extrabold  text-center leading-6 uppercase">add <br />device </div>
+        </button>
         {/* manage farm */}
-        <button className="bg-red-100 flex justify-center items-center rounded-xl w-16 h-16" onClick={e=> {e.preventDefault(); navigate('/farmtable')}}> </button>
-        <div className="text-lg font-extrabold text-center leading-6 mt-2 mb-6 uppercase">manage <br />farm </div>
+        <button className="border-4 border-black flex justify-center items-center rounded-xl w-16 h-16 mb-4" onClick={e => { e.preventDefault(); navigate('/farmtable') }}>
+        <div className="text-sm font-extrabold text-center leading-6  uppercase">set <br />farm </div>
+        </button>
         {/* log out */}
-        <button className="bg-red-100 flex justify-center items-center rounded-xl w-16 h-16" onClick={e=> {e.preventDefault(); logOut()}}> </button>
-        <div className="text-lg font-extrabold text-center leading-6 mt-2 mb-6 uppercase">log out </div>
+        <button className="border-4 border-black flex justify-center items-center rounded-xl w-16 h-16" onClick={e => { e.preventDefault(); logOut() }}>
+        <div className="text-sm font-extrabold text-center leading-6  uppercase">log out </div>
+        </button>
       </div>
     </div>
   </>

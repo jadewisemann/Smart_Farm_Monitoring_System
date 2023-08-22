@@ -159,7 +159,7 @@ const TempHeatmap = ({data = defaultData}) => (
   <ResponsiveHeatMap
       isInteractive={false}
         data={data}
-        margin={{ top: 60, right: 90, bottom: 60, left: 90 }}
+        margin={{ top: 22, right: 30, bottom: 20, left: 40 }}
         valueFormat=">-.2s"
         axisTop={{
             tickSize: 5,
@@ -193,22 +193,7 @@ const TempHeatmap = ({data = defaultData}) => (
         }}
         emptyColor="#555555"
         legends={[
-            {
-                anchor: 'bottom',
-                translateX: 0,
-                translateY: 30,
-                length: 400,
-                thickness: 8,
-                direction: 'row',
-                tickPosition: 'after',
-                tickSize: 3,
-                tickSpacing: 4,
-                tickOverlap: false,
-                tickFormat: '>-.2s',
-                title: 'Value →',
-                titleAlign: 'start',
-                titleOffset: 4
-            }
+            
         ]}
     />
 )

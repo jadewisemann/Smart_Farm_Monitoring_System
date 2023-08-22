@@ -4,17 +4,12 @@ import { useEffect } from "react";
 
 
 
-export default function FindPassword() {
-  
-  useEffect(() => {
-    findPassword();
-  }, []);
-
+export default function FindPassword({userEmail, userId}) {
   async function findPassword() { 
     try {
       const response = await AxiosApi.post('/members/findPw', {
-        'email': 'jadewisemann@gmail.com',
-        'userId': 'admin'
+        'email': userEmail,
+        'userId': userId
       });
       console.log('response', response)
     } catch (error) {
@@ -24,6 +19,4 @@ export default function FindPassword() {
       console.error("아아디 찾기 실패:", error);
     }
   }
-
-
 }
