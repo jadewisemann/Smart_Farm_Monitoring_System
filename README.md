@@ -46,7 +46,7 @@
 
 ### 🗂️ 프로젝트 구조
 
-<img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/ad149e3d-b538-49c4-9743-f030125da725"/>
+<img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/ad149e3d-b538-49c4-9743-f030125da725](https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/a148719a-7f43-48f7-8025-df30a69685c7"/>
 
 ---
 ### ✏️ 향후 계획
