@@ -86,6 +86,8 @@
 
 - 소비자에게 해당 상품의 생육 일기를 제공
 
+- AI 서버를 만들고 센서가 찍어온 사진에 잡초가 있는 부분을 표시하여 잡초 관리 비용을 줄일 수 있는 방법을 구성
+  
 | 메인 화면 | 판매자 정보 화면 | 상품 정보 |
 | --- | --- | --- |
 | <img src=https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/cd67407e-9e43-43b1-a2fb-9a8b4ef8dd9c/> | <img src=https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/1ea8235e-f323-4070-8e26-207d0cb75a31/> | <img src=https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/ea148398-527b-43fa-badd-d863b0bd25fd/> |
