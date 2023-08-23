@@ -46,7 +46,7 @@ This project was started to develop a monitoring system that allows users to rec
 
 ### 🗂️ Project Structure
 
-<img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/ad149e3d-b538-49c4-9743-f030125da725"/>
+<img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/75f2c320-81c4-4d33-87f8-8889a40491c3"/>
 
 ---
 ### ✏️ Future plans
@@ -67,3 +67,17 @@ This project was started to develop a monitoring system that allows users to rec
 | <img src=https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/356ed655-4b8b-4db9-af04-db2a719f41d8/> | <img src=https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/9c2ff9e6-40d9-463f-afd3-ed69c0130f08/> | <img src=https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/85d8de08-00e3-43ef-a2f3-9e6c38ce1a88/> |
 | Farm monitoring screen | Add devices to collect data | Change farm properties of devices |
 
+---
+### 📌 Reference
+
+Front-end
+
+- https://github.com/jadewisemann/Smart_Farm_Monitoring_System/wiki/Front-end
+
+Back-end
+
+- https://github.com/jadewisemann/Smart_Farm_Monitoring_System/wiki/Back-end
+
+Sensor & AI
+
+- https://github.com/jadewisemann/Smart_Farm_Monitoring_System/wiki/AI-%26-Sensor
