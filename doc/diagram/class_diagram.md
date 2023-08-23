@@ -56,4 +56,5 @@ classDiagram
         userPlants[*]
         sensor[*]
     }
+
 ```
