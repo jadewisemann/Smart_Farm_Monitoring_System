@@ -32,6 +32,8 @@
 - 소비자에게도 생산자의 농장 정보를 제공하여 소비자-생산자 간 정보 불균형 문제를 해결하고자 합니다.
 - 소비자는 QR측정을 통해 해당 상품의 생육 일기 및 해당 농장의 정보를 알 수 있습니다.(추후 개발 예정)
 
+---
+
 ### ✔️ 주요 기능
 
 | 홈 화면 | 회원 가입 | 로그인 |
@@ -44,11 +46,14 @@
 | <img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/fd5faae8-36d5-401d-b175-2dcd21c7823c"/> | <img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/2bac3233-0857-480c-b62f-e18a95849c0b"/> | <img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/dae619fd-c50b-4e78-a5f3-f0c66d8cb2a7"/> |
 | 농장 모니터링 화면 | 데이터를 수집할 기기 추가 | 기기의 농장 속성 변경 |
 
+---
+
 ### 🗂️ 프로젝트 구조
 
 <img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/75f2c320-81c4-4d33-87f8-8889a40491c3"/>
 
 ---
+
 ### ✏️ 향후 계획
 
 - 수집한 데이터를 바탕으로 소비자에게 전달하기 위한 데이터 가공 및 표현하기 위한 SSG 구성
@@ -68,6 +73,7 @@
 | 온도 정보 제공 | 조도 정보 제공 | 습도 정보 제공 |
 
 ---
+
 ### 📌 참고
 
 프론트 엔드
