@@ -60,9 +60,16 @@
 | --- | --- | --- |
 | ![train_batch1](https://github.com/Hyeonseo-Lee/colabtestcommit/assets/87067373/1439be2b-f56e-458e-971b-6f83290dc531) | ![val_batch1_pred](https://github.com/Hyeonseo-Lee/colabtestcommit/assets/87067373/978cc9bb-48db-4135-94bf-285d3e5ff3f0) | ![val_batch1_labels](https://github.com/Hyeonseo-Lee/colabtestcommit/assets/87067373/22450276-c7e4-4c10-8240-37ea598d8467) |
 
-| F1-Curve | P-Curve | R-Curve | PR-Curve |
-| --- | --- | --- | --- |
-| ![F1_curve](https://github.com/Hyeonseo-Lee/colabtestcommit/assets/87067373/b9f76a13-ef92-4fa8-af83-18c94b540144) | ![P_curve](https://github.com/Hyeonseo-Lee/colabtestcommit/assets/87067373/5969bda1-cc38-4f9d-9cc0-b1208a4c7f6c) | ![R_curve](https://github.com/Hyeonseo-Lee/colabtestcommit/assets/87067373/9ae5af20-0e95-4911-8212-75e53bd7acff) |   ![PR_curve](https://github.com/Hyeonseo-Lee/colabtestcommit/assets/87067373/f0695d20-cce4-4584-9be1-9141da4a4552) |
+
+| F1-Curve | P-Curve |
+| --- | --- | 
+| ![F1_curve](https://github.com/Hyeonseo-Lee/colabtestcommit/assets/87067373/b9f76a13-ef92-4fa8-af83-18c94b540144) | ![P_curve](https://github.com/Hyeonseo-Lee/colabtestcommit/assets/87067373/5969bda1-cc38-4f9d-9cc0-b1208a4c7f6c) |
+
+
+| R-Curve | PR-Curve |
+| --- | --- |
+| ![R_curve](https://github.com/Hyeonseo-Lee/colabtestcommit/assets/87067373/9ae5af20-0e95-4911-8212-75e53bd7acff) |   ![PR_curve](https://github.com/Hyeonseo-Lee/colabtestcommit/assets/87067373/f0695d20-cce4-4584-9be1-9141da4a4552) |
+
 
 | Result |
 | --- |
