@@ -1,10 +1,12 @@
 HELP.md
 .gradle
 build/
+
+.gitmessage.txt
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
- .gitmessage
+
 
 ### STS ###
 .apt_generated
@@ -19,6 +21,8 @@ bin/
 !**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
+application-oauth.properties
+application-stage.properties
 .idea
 *.iws
 *.iml
@@ -36,3 +40,4 @@ out/
 
 ### VS Code ###
 .vscode/
+/src/main/resources/omega-branch-396406-7356fbd5a834.json
