@@ -35,17 +35,6 @@
 ### ✔️ 주요 기능
 
 
-#### Front-end
-<a href="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/wiki/Front%E2%80%90end">상세보기</a>
-
-#### Back-end
-<a href="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/wiki/Back%E2%80%90end">상세보기</a>
-
-#### Sensor <a href="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/wiki/Sensor">상세보기</a>
--  TLS-certified MQTT communication to improve IoT data transmission security
-
-
-
 =======
 | 홈 화면 | 회원 가입 | 로그인 |
 | --- | --- | --- |
