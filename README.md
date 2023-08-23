@@ -20,7 +20,6 @@
 - 백엔드 - 박하운 [https://github.com/poow810](https://github.com/poow810)
 - Sensor & AI - 이현서 [https://github.com/Hyeonseo-Lee](https://github.com/Hyeonseo-Lee)
 
----
 
 ### ⭐ 프로젝트 소개
 
@@ -32,10 +31,22 @@
 - 소비자에게도 생산자의 농장 정보를 제공하여 소비자-생산자 간 정보 불균형 문제를 해결하고자 합니다.
 - 소비자는 QR측정을 통해 해당 상품의 생육 일기 및 해당 농장의 정보를 알 수 있습니다.(추후 개발 예정)
 
----
 
 ### ✔️ 주요 기능
 
+
+#### Front-end
+<a href="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/wiki/Front%E2%80%90end">상세보기</a>
+
+#### Back-end
+<a href="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/wiki/Back%E2%80%90end">상세보기</a>
+
+#### Sensor <a href="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/wiki/Sensor">상세보기</a>
+-  TLS-certified MQTT communication to improve IoT data transmission security
+
+
+
+=======
 | 홈 화면 | 회원 가입 | 로그인 |
 | --- | --- | --- |
 | <img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/5513bb9a-53bf-4c46-81a8-442bc24a8b51"/> | <img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/53451a4e-2b19-48d0-877a-d48db3fdb0e2"/> | <img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/365360d9-c923-4276-aa51-af1ff55d9972"/> |
@@ -87,3 +98,4 @@
 Sensor 및 AI
 
 - https://github.com/jadewisemann/Smart_Farm_Monitoring_System/wiki/AI-%26-Sensor
+
