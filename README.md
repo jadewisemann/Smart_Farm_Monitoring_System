@@ -41,7 +41,7 @@
 
 | 메인 화면 | 기기 추가 | 농장 변경 |
 | --- | --- | --- |
-| <img src=””/> | <img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/2bac3233-0857-480c-b62f-e18a95849c0b"/> | <img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/dae619fd-c50b-4e78-a5f3-f0c66d8cb2a7"/> |
+| <img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/fd5faae8-36d5-401d-b175-2dcd21c7823c"/> | <img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/2bac3233-0857-480c-b62f-e18a95849c0b"/> | <img src="https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/dae619fd-c50b-4e78-a5f3-f0c66d8cb2a7"/> |
 | 농장 모니터링 화면 | 데이터를 수집할 기기 추가 | 기기의 농장 속성 변경 |
 
 ### 🗂️ 프로젝트 구조
