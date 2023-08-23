@@ -66,3 +66,18 @@
 | --- | --- | --- |
 | <img src=https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/356ed655-4b8b-4db9-af04-db2a719f41d8/> | <img src=https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/9c2ff9e6-40d9-463f-afd3-ed69c0130f08/> | <img src=https://github.com/jadewisemann/Smart_Farm_Monitoring_System/assets/111109429/85d8de08-00e3-43ef-a2f3-9e6c38ce1a88/> |
 | 온도 정보 제공 | 조도 정보 제공 | 습도 정보 제공 |
+
+---
+### 📌 참고
+
+프론트 엔드
+
+- https://github.com/jadewisemann/Smart_Farm_Monitoring_System/wiki/Front-end
+
+백엔드
+
+- https://github.com/jadewisemann/Smart_Farm_Monitoring_System/wiki/Back-end
+
+Sensor 및 AI
+
+- https://github.com/jadewisemann/Smart_Farm_Monitoring_System/wiki/AI-%26-Sensor
