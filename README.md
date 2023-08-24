@@ -12,9 +12,11 @@
 
 ⚙️ 개발 환경
 
-- ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat&logo=spring-boot&logoColor=ffffff&color=6DB33F&labelColor=ffffff)
- ![React](https://img.shields.io/badge/React-40AEF0?style=flat&logo=react)
-- ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=white)
+- ![Springboot Badge](https://img.shields.io/badge/Springboot-6DB33F?style=flat&logo=spring-boot&logoColor=white)
+- ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=white) ![React](https://img.shields.io/badge/React-40AEF0?style=flat&logo=react)
+- ![Arduino Badge](https://img.shields.io/badge/Arduino-00979D?style=flat&logo=arduino&logoColor=white) ![Python Badge](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white) ![Raspberry Pi Badge](https://img.shields.io/badge/Raspberry%20Pi-white?style=flat&logo=raspberry-pi&logoColor=C51A4A)
+
+
 
 
 
